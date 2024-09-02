@@ -1,23 +1,23 @@
 <template>
   <div id="about" class="min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-5xl bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="w-full max-w-xl md:max-w-5xl bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
       <div class="flex flex-col md:flex-row">
-        <div class="md:w-2/5 bg-gray-700">
-          <div class="relative h-full">
+        <div class="w-full md:w-2/5 bg-gray-700">
+          <div class="relative h-64 md:h-full">
             <img
                 :src="billyflin"
                 alt="Billy Martínez"
                 class="w-full h-full object-cover object-top transition-all duration-700 ease-in-out"
                 @load="onImageLoad"
                 :class="{ 'opacity-0 scale-105': !imageLoaded, 'opacity-100 scale-100': imageLoaded }"
-            >
+            />
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
           </div>
         </div>
-        <div class="p-8 md:w-3/5 flex flex-col justify-between">
+        <div class="p-6 md:p-8 w-full md:w-3/5 flex flex-col justify-between">
           <div>
-            <h2 class="text-4xl font-bold mb-2 text-white">Billy Martínez</h2>
-            <p class="text-xl text-gray-300 mb-6">Estudiante de Ingeniería Informática</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-2 text-white">Billy Martínez</h2>
+            <p class="text-lg md:text-xl text-gray-300 mb-6">Estudiante de Ingeniería Informática</p>
             <div class="space-y-3 mb-8">
               <div class="flex items-center text-gray-300">
                 <MapPinIcon class="w-5 h-5 mr-3 text-gray-400" />
@@ -25,7 +25,7 @@
               </div>
               <div class="flex items-center text-gray-300">
                 <MailIcon class="w-5 h-5 mr-3 text-gray-400" />
-                <span>billy.martinez@example.com</span>
+                <span href="mailto:billymartinezc@gmail.com">billymartinezc@gmail.com</span>
               </div>
             </div>
             <div class="space-y-4 text-gray-300">
@@ -40,12 +40,12 @@
               </p>
             </div>
           </div>
-          <div class="flex space-x-4 mt-8">
-            <button class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-full flex items-center space-x-2 transition duration-300 shadow-lg hover:shadow-xl">
+          <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-8">
+            <button class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-full flex items-center justify-center space-x-2 transition duration-300 shadow-lg hover:shadow-xl">
               <GithubIcon class="w-5 h-5" />
               <span>GitHub</span>
             </button>
-            <button class="bg-gradient-to-r from-indigo-800 to-fuchsia-900 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full flex items-center space-x-2 transition duration-300 shadow-lg hover:shadow-xl">
+            <button class="bg-gradient-to-r from-indigo-800 to-fuchsia-900 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full flex items-center justify-center space-x-2 transition duration-300 shadow-lg hover:shadow-xl">
               <LinkedinIcon class="w-5 h-5" />
               <span>LinkedIn</span>
             </button>
@@ -55,6 +55,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue';
