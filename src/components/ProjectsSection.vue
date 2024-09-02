@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="py-20">
+  <section id="projects" class="py-20 ">
     <div class="container mx-auto px-4">
       <h2 class="text-5xl font-bold mb-16 text-center text-gradient">Proyectos</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -12,6 +12,15 @@
           <div class="p-6 flex-grow">
             <h3 class="text-2xl font-semibold mb-3 text-gradient">{{ project.name }}</h3>
             <p class="text-gray-300 mb-4">{{ project.description }}</p>
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-gray-400 mb-2">Tecnologías utilizadas:</h4>
+              <div class="flex flex-wrap gap-2">
+                <span v-for="tech in project.technologies" :key="tech"
+                      class="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
           </div>
           <div class="p-6 pt-0 flex space-x-4">
             <a :href="project.github" target="_blank" rel="noopener noreferrer"
@@ -38,7 +47,17 @@ import { LinkIcon } from 'lucide-vue-next';
 defineProps({
   projects: {
     type: Array,
-    required: true
+    required: true,
+    validator: (value) => {
+      return value.every(project =>
+          project.name &&
+          project.description &&
+          project.image &&
+          project.github &&
+          project.demo &&
+          Array.isArray(project.technologies)
+      );
+    }
   }
 });
 </script>

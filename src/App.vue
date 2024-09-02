@@ -59,6 +59,10 @@ import SkillSection from "./components/SkillSection.vue";
 import AboutSection from "./components/AboutSection.vue";
 import FooterComponent from "./components/FooterComponent.vue";
 import HeaderComponent from "./components/HeaderComponent.vue";
+import meme  from "./assets/img/Meme.jpg"
+import logoHapp from "./assets/img/LogoHapp.svg"
+import happ from "./assets/img/Happ.png"
+import ufroSus from "./assets/img/UfroSus.png"
 
 const blob = ref(null);
 const scrolled = ref(false);
@@ -68,6 +72,7 @@ const navItems = [
   { href: '#about', text: 'Acerca de mí' },
   { href: '#skills', text: 'Habilidades' },
   { href: '#projects', text: 'Proyectos' },
+  {href: '#certifications', text: 'Certificaciones'},
   { href: '#contact', text: 'Contacto' },
 ];
 
@@ -119,25 +124,28 @@ const skills = [
 
 const projects = [
   {
-    name: 'Plataforma E-commerce',
-    description: 'Una solución de comercio electrónico full-stack construida con Vue.js y Node.js.',
-    image: '/placeholder.svg?height=300&width=400',
-    github: 'https://github.com/billy-martinez/ecommerce',
-    demo: 'https://ecommerce-demo.com',
+    name: 'EcoSense',
+    description: 'Un ecosistema completo para la gestión de residuos en la ciudad de Temuco. Gestionando Contenedores Inteligentes, Reciclaje y Rutas de Recolección.',
+    image: meme,
+    github: 'https://github.com/billyflin',
+    demo: '',
+    technologies: ['Kotlin', 'Firebase', 'Crashlytics', 'Firestore', 'Google Maps','Arduino','Raspberry Pi','Docker'],
   },
   {
-    name: 'App de Gestión de Tareas',
-    description: 'Una aplicación de gestión de tareas basada en React con una interfaz de usuario limpia.',
-    image: '/placeholder.svg?height=300&width=400',
-    github: 'https://github.com/billy-martinez/task-manager',
-    demo: 'https://task-manager-demo.com',
+    name: 'App de Gestión de Propiedades',
+    description: 'Una aplicación de gestión de propiedades construida con Vue y Spring.',
+    image: happ,
+    github: 'https://github.com/billyflin',
+    demo: 'https://desa.happrent.cl/',
+    technologies: ['Vue.js', 'Spring Boot', 'PostgreSQL', 'Docker', 'AWS'],
   },
   {
-    name: 'Dashboard del Clima',
-    description: 'Un dashboard del clima utilizando Vue.js y una API de terceros.',
-    image: '/placeholder.svg?height=300&width=400',
-    github: 'https://github.com/billy-martinez/weather-dashboard',
-    demo: 'https://weather-dashboard-demo.com',
+    name: 'Ufro Sustentable',
+    description: 'Una aplicación nativa para la gestión de residuos en la Universidad de la Frontera.',
+    image: ufroSus,
+    github: 'https://github.com/Billyflin/UfroSustentableApp',
+    demo: 'https://www.linkedin.com/posts/billyflin_desarrollodesoftware-reciclaje-sostenibilidad-activity-7216289603790532608-Ro_L?utm_source=share&utm_medium=member_desktop',
+    technologies: ['Kotlin', 'Firebase', 'Crashlytics', 'Firestore', 'Google Maps'],
   },
 ];
 
