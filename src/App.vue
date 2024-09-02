@@ -13,7 +13,7 @@
           <div class="flex justify-between items-center">
             <div class="flex items-center">
               <TerminalIcon class="w-8 h-8 md:w-8 md:h-8 text-gradient mr-2"/>
-              <h1 class="text-2xl md:text-3xl font-bold text-gradient">Billyflin</h1>
+              <h1 class="text-2xl md:text-3xl font-bold text-gradient font-roboto">Billyflin</h1>
             </div>
             <div class="hidden md:flex space-x-6">
               <a v-for="item in navItems" :key="item.href" :href="item.href"
@@ -257,6 +257,10 @@ const projects = [
   to {
     background-position: -200% center;
   }
+}
+
+.font-roboto{
+  font-family: "Roboto", sans-serif;
 }
 
 .blob {

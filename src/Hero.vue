@@ -1,12 +1,12 @@
 <template>
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden py-20 font-light">
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden py-20 font-roboto">
     <div class="text-center z-10 px-4 max-w-3xl mx-auto">
       <h1 class="text-2xl text-violet-100 sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 flex flex-col items-center justify-center text-center leading-tight">
         <span class="mb-2">Hola, soy Billy Martínez, aunque</span>
         <span class="mb-2"> en con un computador soy</span>
         <magic-text-span
             texto-resaltar="Billyflin"
-            additional-classes="text-gradient hover:text-pink-500 transition duration-300 text-4xl
+            additional-classes=" transition duration-300 text-4xl
             sm:text-5xl md:text-6xl lg:text-7xl my-4"
         />
         <span class="mt-2">Como Bruce Wayne y Batman,</span>
@@ -47,17 +47,13 @@
 </template>
 
 <script setup>
-import { TerminalIcon } from 'lucide-vue-next';
+import {TerminalIcon} from 'lucide-vue-next';
 import MagicTextSpan from "./components/MagicTextSpan.vue";
 import ChangingText from "./components/ChangingText.vue";
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-.font-poppins {
-  font-family: 'Poppins', sans-serif;
-}
 
 @keyframes rotate {
   from {
@@ -84,10 +80,6 @@ import ChangingText from "./components/ChangingText.vue";
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.animation-delay-300 {
-  animation-delay: 300ms;
-}
-
 .animation-delay-600 {
   animation-delay: 600ms;
 }
@@ -100,8 +92,8 @@ import ChangingText from "./components/ChangingText.vue";
   animation-delay: 1000ms;
 }
 
-.animation-delay-1200 {
-  animation-delay: 1200ms;
+.font-roboto {
+  font-family: "Roboto", sans-serif;
 }
 
 @keyframes fadeInUp {
