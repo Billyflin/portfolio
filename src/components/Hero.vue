@@ -9,9 +9,8 @@
             additional-classes=" transition duration-300 text-4xl
             sm:text-5xl md:text-6xl lg:text-7xl my-4"
         />
-        <span class="mt-2">Como Bruce Wayne y Batman,</span>
-        <span>pero con más código y menos murciélagos.</span>
-        <span class="text-sm sm:text-base md:text-lg mt-4 text-gray-900 font-bold">Igual de oscuro</span>
+        <span class="mt-2 text-xl text-gray-300">Como Bruce Wayne y Batman,</span>
+        <span class="mt-2 text-xl text-gray-300">pero con más código y menos murciélagos.</span>
       </h1>
 
       <div class="flex items-center justify-center space-x-4 mt-8 mb-10">

@@ -1,45 +1,18 @@
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-gray-900 text-gray-100 z-0">
+  <div class="relative min-h-screen overflow-hidden bg-gray-900 text-gray-100">
     <!-- Blob Background -->
     <div ref="blob" class="blob"></div>
     <div class="blur"></div>
 
     <!-- Main Content -->
-    <div class="relative z-2">
+    <div class="relative z-10">
       <!-- Header -->
-      <header
-          :class="['fixed top-0 left-0 right-0 z-20 transition-all duration-300',
-           {'bg-gray-900 bg-opacity-90 shadow-lg': scrolled, 'bg-transparent': !scrolled}]"
-      >
-        <nav class="container mx-auto px-4 py-4">
-          <div class="flex justify-between items-center">
-            <div class="flex items-center">
-              <TerminalIcon class="w-8 h-8 text-gradient mr-2 animate-pulse"/>
-              <h1 class="text-2xl md:text-3xl font-bold text-gradient">Billyflin</h1>
-            </div>
-            <div class="hidden md:flex space-x-6">
-              <a v-for="item in navItems" :key="item.href" :href="item.href"
-                 :class="['text-lg transition-colors', {'text-blue-400': activeSection === item.href.slice(1), 'text-gray-300 hover:text-blue-400': activeSection !== item.href.slice(1)}]">
-                {{ item.text }}
-              </a>
-            </div>
-            <button @click="toggleMobileMenu" class="md:hidden text-gray-300 hover:text-blue-400">
-              <MenuIcon v-if="!mobileMenuOpen" class="h-6 w-6" />
-              <XIcon v-else class="h-6 w-6" />
-            </button>
-          </div>
-        </nav>
-        <!-- Mobile Menu -->
-        <transition name="slide-fade">
-          <div v-if="mobileMenuOpen" class="md:hidden bg-gray-800 py-2">
-            <a v-for="item in navItems" :key="item.href" :href="item.href"
-               @click="mobileMenuOpen = false"
-               class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-blue-400 transition-colors">
-              {{ item.text }}
-            </a>
-          </div>
-        </transition>
-      </header>
+      <HeaderComponent
+          :nav-items="navItems"
+          :scrolled="scrolled"
+          :active-section="activeSection"
+          @update:active-section="updateActiveSection"
+      />
 
       <!-- Hero Section -->
       <Hero />
@@ -47,30 +20,26 @@
       <!-- Main Content -->
       <main class="container mx-auto px-4 py-16">
         <!-- About Section -->
-        <AboutSection/>
+        <AboutSection />
 
         <!-- Skills Section -->
-        <SkillSection :skills="skills"/>
+        <SkillSection :skills="skills" />
 
         <!-- Projects Section -->
-        <ProjectsSection :projects="projects"/>
+        <ProjectsSection :projects="projects" />
 
         <!-- Contact Section -->
-        <ContactSection :socialLinks="socialLinks"/>
+        <ContactSection :social-links="socialLinks" />
       </main>
 
       <!-- Footer -->
-      <footer class="bg-gray-800 bg-opacity-50 py-8">
-        <div class="container mx-auto px-4 text-center text-gray-400">
-          <p>&copy; {{ new Date().getFullYear() }} Billyflin. Todos los derechos reservados. Como si fuera mi primera pag web jajaja</p>
-        </div>
-      </footer>
+      <FooterComponent />
     </div>
   </div>
 </template>
 
 <script setup>
-import {onMounted, onUnmounted, ref} from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import {
   GitHubIcon,
   GmailIcon,
@@ -83,16 +52,16 @@ import {
   TypeScriptIcon,
   VueDotjsIcon
 } from 'vue3-simple-icons';
-import {MenuIcon, TerminalIcon, XIcon} from "lucide-vue-next";
 import Hero from "./components/Hero.vue";
-import ContactSection from "./ContactSection.vue";
-import ProjectsSection from "./ProjectsSection.vue";
-import SkillSection from "./SkillSection.vue";
-import AboutSection from "./AboutSection.vue";
+import ContactSection from "./components/ContactSection.vue";
+import ProjectsSection from "./components/ProjectsSection.vue";
+import SkillSection from "./components/SkillSection.vue";
+import AboutSection from "./components/AboutSection.vue";
+import FooterComponent from "./components/FooterComponent.vue";
+import HeaderComponent from "./components/HeaderComponent.vue";
 
 const blob = ref(null);
 const scrolled = ref(false);
-const mobileMenuOpen = ref(false);
 const activeSection = ref('');
 
 const navItems = [
@@ -102,8 +71,8 @@ const navItems = [
   { href: '#contact', text: 'Contacto' },
 ];
 
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value;
+const updateActiveSection = (section) => {
+  activeSection.value = section;
 };
 
 const handleScroll = () => {
@@ -113,28 +82,29 @@ const handleScroll = () => {
   for (const section of sections) {
     const element = document.getElementById(section);
     if (element && window.scrollY >= element.offsetTop - 100) {
-      activeSection.value = section;
+      updateActiveSection(section);
       break;
     }
   }
 };
 
+const handleBlobAnimation = (event) => {
+  const { clientX, clientY } = event;
+  blob.value.animate({
+    left: `${clientX}px`,
+    top: `${clientY}px`
+  }, { duration: 3000, fill: "forwards" });
+};
+
 onMounted(() => {
   if (blob.value) {
-    window.onpointermove = event => {
-      const { clientX, clientY } = event;
-
-      blob.value.animate({
-        left: `${clientX}px`,
-        top: `${clientY}px`
-      }, { duration: 3000, fill: "forwards" });
-    }
+    window.addEventListener('pointermove', handleBlobAnimation);
   }
-
   window.addEventListener('scroll', handleScroll);
 });
 
 onUnmounted(() => {
+  window.removeEventListener('pointermove', handleBlobAnimation);
   window.removeEventListener('scroll', handleScroll);
 });
 
@@ -180,32 +150,17 @@ const socialLinks = [
 </script>
 
 <style scoped>
-
 @keyframes rotate {
   from { rotate: 0deg; }
   50% { scale: 1 1.5; }
   to { rotate: 360deg; }
 }
 
-@keyframes background-pan {
-  from {
-    background-position: 0% center;
-  }
-
-  to {
-    background-position: -200% center;
-  }
-}
-
-.font-roboto{
-  font-family: "Roboto", sans-serif;
-}
-
 .blob {
   height: 20vmax;
   aspect-ratio: 1;
   position: fixed;
-  z-index: -3;
+  z-index: 1;
   left: 50%;
   top: 50%;
   translate: -50% -50%;
@@ -221,35 +176,11 @@ const socialLinks = [
   opacity: 0.8;
 }
 
-.text-gradient {
-  animation: background-pan 3s linear infinite;
-  background: linear-gradient(
-      to right,
-      rgb(123, 31, 162),
-      rgb(103, 58, 183),
-      rgb(244, 143, 177),
-      rgb(123, 31, 162)
-  );
-  background-size: 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  white-space: nowrap;
-}
-
 .blur {
   height: 100%;
   width: 100%;
-  position: absolute;
-  z-index: -2;
+  position: fixed;
+  z-index: 2;
   backdrop-filter: blur(11vmax);
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .5; }
-}
-
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 </style>
