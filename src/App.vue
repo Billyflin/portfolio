@@ -67,6 +67,7 @@ import logoHapp from "./assets/img/LogoHapp.svg"
 import happ from "./assets/img/Happ.png"
 import ufroSus from "./assets/img/UfroSus.png"
 import CertificationsSection from "./components/CertificationsSection.vue";
+import EcoSense from "./assets/img/EcoSenseLogo.svg"
 
 const blob = ref(null);
 const scrolled = ref(false);
@@ -130,7 +131,7 @@ const projects = [
   {
     name: 'EcoSense',
     description: 'Un ecosistema completo para la gestión de residuos en la ciudad de Temuco. Gestionando Contenedores Inteligentes, Reciclaje y Rutas de Recolección.',
-    image: meme,
+    image: EcoSense,
     github: 'https://github.com/billyflin',
     demo: '',
     technologies: ['Kotlin', 'Firebase', 'Crashlytics', 'Firestore', 'Google Maps','Arduino','Raspberry Pi','Docker'],
