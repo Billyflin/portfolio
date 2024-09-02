@@ -3,7 +3,7 @@
     <div class="text-center z-10 px-4 max-w-3xl mx-auto">
       <h1 class="text-2xl text-violet-100 sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 flex flex-col items-center justify-center text-center leading-tight">
         <span class="mb-2">Hola, soy Billy Martínez, aunque</span>
-        <span class="mb-2"> en con un computador soy</span>
+        <span class="mb-2">con un computador soy</span>
         <magic-text-span
             texto-resaltar="Billyflin"
             additional-classes=" transition duration-300 text-4xl
