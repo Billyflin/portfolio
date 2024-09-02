@@ -30,6 +30,9 @@
 
         <!-- Contact Section -->
         <ContactSection :social-links="socialLinks" />
+
+<!--        Certifications Section-->
+        <CertificationsSection />
       </main>
 
       <!-- Footer -->
@@ -63,6 +66,7 @@ import meme  from "./assets/img/Meme.jpg"
 import logoHapp from "./assets/img/LogoHapp.svg"
 import happ from "./assets/img/Happ.png"
 import ufroSus from "./assets/img/UfroSus.png"
+import CertificationsSection from "./components/CertificationsSection.vue";
 
 const blob = ref(null);
 const scrolled = ref(false);
