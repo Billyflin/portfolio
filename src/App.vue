@@ -142,10 +142,10 @@ const projects = [
 ];
 
 const socialLinks = [
-  { name: 'LinkedIn', icon: LinkedInIcon, url: 'https://www.linkedin.com/in/billy-martinez', bgClass: 'bg-blue-600 hover:bg-blue-700' },
-  { name: 'GitHub', icon: GitHubIcon, url: 'https://github.com/billy-martinez', bgClass: 'bg-gray-700 hover:bg-gray-800' },
-  { name: 'Instagram', icon: InstagramIcon, url: 'https://www.instagram.com/billy.martinez', bgClass: 'bg-pink-600 hover:bg-pink-700' },
-  { name: 'Email', icon: GmailIcon, url: 'mailto:billy.martinez@example.com', bgClass: 'bg-red-600 hover:bg-red-700' },
+  { name: 'LinkedIn', icon: LinkedInIcon, url: 'https://www.linkedin.com/in/billyflin', bgClass: 'bg-blue-600 hover:bg-blue-700' },
+  { name: 'GitHub', icon: GitHubIcon, url: 'https://github.com/Billyflin', bgClass: 'bg-gray-700 hover:bg-gray-800' },
+  { name: 'Instagram', icon: InstagramIcon, url: 'https://www.instagram.com/billyfliin/', bgClass: 'bg-pink-600 hover:bg-pink-700' },
+  { name: 'Email', icon: GmailIcon, url: 'mailto:billymartinezc@gmail.com', bgClass: 'bg-red-600 hover:bg-red-700' },
 ];
 </script>
 

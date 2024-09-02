@@ -1,17 +1,20 @@
 <template>
-  <section id="skills" class="py-20 ">
+  <section id="skills" class="py-20">
     <div class="container mx-auto px-4">
       <h2 class="text-5xl font-bold mb-16 text-center text-gradient">Mis Habilidades</h2>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div v-for="category in skillCategories" :key="category.name"
-             class="bg-gray-800 bg-opacity-90 rounded-xl p-8 shadow-lg backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+             class="bg-gray-800 bg-opacity-90 rounded-xl p-8 shadow-lg backdrop-blur-sm transform  transition-all duration-300">
           <h3 class="text-3xl font-semibold mb-6 text-white border-b border-gray-700 pb-2">{{ category.name }}</h3>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            <div v-for="skill in category.skills" :key="skill.name"
-                 class="flex flex-col items-center p-4 bg-gray-700 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
+            <a v-for="skill in category.skills" :key="skill.name"
+               :href="getDocumentationUrl(skill.name)"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="flex flex-col items-center p-4 bg-gray-700 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
               <component :is="skill.icon" class="w-12 h-12 mb-3 text-gradient skill-icon"/>
               <span class="text-sm font-medium text-white text-center">{{ skill.name }}</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -26,13 +29,13 @@ import {
   ArduinoIcon,
   CPlusPlusIcon,
   DockerIcon,
-  FirebaseIcon,
+  FirebaseIcon, GitHubIcon,
   GitIcon,
   GoogleCloudIcon,
   JavaScriptIcon,
   KotlinIcon,
-  MongoDbIcon,
-  NodeDotjsIcon,
+  MongoDbIcon, MySqlIcon,
+  NodeDotjsIcon, PostgreSqlIcon,
   PythonIcon,
   ReactIcon,
   RocketIcon,
@@ -41,6 +44,36 @@ import {
   TypeScriptIcon,
   VueDotjsIcon
 } from 'vue3-simple-icons';
+
+// Definir las URL de la documentación
+const documentationUrls = {
+  'JavaScript': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+  'TypeScript': 'https://www.typescriptlang.org/docs/',
+  'Python': 'https://docs.python.org/3/',
+  'Java': 'https://docs.oracle.com/en/java/',
+  'Kotlin': 'https://kotlinlang.org/docs/home.html',
+  'C++': 'https://en.cppreference.com/w/',
+  'Vue.js': 'https://vuejs.org/v2/guide/',
+  'React': 'https://reactjs.org/docs/getting-started.html',
+  'Node.js': 'https://nodejs.org/en/docs/',
+  'Spring': 'https://spring.io/projects/spring-framework',
+  'MongoDB': 'https://docs.mongodb.com/',
+  'Firebase': 'https://firebase.google.com/docs',
+  'AWS': 'https://docs.aws.amazon.com/',
+  'Google Cloud': 'https://cloud.google.com/docs',
+  'PostgreSQL': 'https://www.postgresql.org/docs/',
+  'MySQL': 'https://dev.mysql.com/doc/',
+  'Docker': 'https://docs.docker.com/',
+  'Git': 'https://git-scm.com/doc',
+  'CI/CD': 'https://en.wikipedia.org/wiki/CI/CD',
+  'Arduino': 'https://www.arduino.cc/reference/en/',
+  'Github': 'https://docs.github.com/en'
+};
+
+// Función para obtener la URL de la documentación
+const getDocumentationUrl = (skillName) => {
+  return documentationUrls[skillName] || '#';
+};
 
 const skillCategories = ref([
   {
@@ -52,7 +85,6 @@ const skillCategories = ref([
       {name: 'Java', icon: SpringBootIcon},
       {name: 'Kotlin', icon: KotlinIcon},
       {name: 'C++', icon: CPlusPlusIcon},
-      {name: 'Arduino', icon: ArduinoIcon},
     ]
   },
   {
@@ -71,6 +103,8 @@ const skillCategories = ref([
       {name: 'Firebase', icon: FirebaseIcon},
       {name: 'AWS', icon: AmazonWebServicesIcon},
       {name: 'Google Cloud', icon: GoogleCloudIcon},
+      {name: 'PostgreSQL', icon: PostgreSqlIcon},
+      {name: 'MySQL', icon: MySqlIcon},
     ]
   },
   {
@@ -80,10 +114,12 @@ const skillCategories = ref([
       {name: 'Git', icon: GitIcon},
       {name: 'CI/CD', icon: RocketIcon},
       {name: 'Arduino', icon: ArduinoIcon},
+      {name: 'Github' , icon: GitHubIcon},
     ]
   },
 ]);
 </script>
+
 
 <style scoped>
 @keyframes background-pan {
