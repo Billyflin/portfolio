@@ -1,19 +1,21 @@
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-gray-900 text-gray-100">
+  <div class="relative min-h-screen overflow-hidden bg-gray-900 text-gray-100 z-0">
     <!-- Blob Background -->
     <div ref="blob" class="blob"></div>
     <div class="blur"></div>
 
-    <!-- Existing Content -->
-    <div class="relative z-10">
+    <!-- Main Content -->
+    <div class="relative z-2">
       <!-- Header -->
       <header
-          :class="['fixed top-0 left-0 right-0 z-20 transition-all duration-300', {'bg-gray-900 shadow-lg': scrolled, 'bg-transparent': !scrolled}]">
+          :class="['fixed top-0 left-0 right-0 z-20 transition-all duration-300',
+           {'bg-gray-900 bg-opacity-90 shadow-lg': scrolled, 'bg-transparent': !scrolled}]"
+      >
         <nav class="container mx-auto px-4 py-4">
           <div class="flex justify-between items-center">
             <div class="flex items-center">
-              <TerminalIcon class="w-8 h-8 md:w-8 md:h-8 text-gradient mr-2"/>
-              <h1 class="text-2xl md:text-3xl font-bold text-gradient font-roboto">Billyflin</h1>
+              <TerminalIcon class="w-8 h-8 text-gradient mr-2 animate-pulse"/>
+              <h1 class="text-2xl md:text-3xl font-bold text-gradient">Billyflin</h1>
             </div>
             <div class="hidden md:flex space-x-6">
               <a v-for="item in navItems" :key="item.href" :href="item.href"
@@ -22,112 +24,45 @@
               </a>
             </div>
             <button @click="toggleMobileMenu" class="md:hidden text-gray-300 hover:text-blue-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                   stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-              </svg>
+              <MenuIcon v-if="!mobileMenuOpen" class="h-6 w-6" />
+              <XIcon v-else class="h-6 w-6" />
             </button>
           </div>
         </nav>
         <!-- Mobile Menu -->
-        <div v-if="mobileMenuOpen" class="md:hidden bg-gray-800 py-2">
-          <a v-for="item in navItems" :key="item.href" :href="item.href"
-             @click="mobileMenuOpen = false"
-             class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-blue-400">
-            {{ item.text }}
-          </a>
-        </div>
+        <transition name="slide-fade">
+          <div v-if="mobileMenuOpen" class="md:hidden bg-gray-800 py-2">
+            <a v-for="item in navItems" :key="item.href" :href="item.href"
+               @click="mobileMenuOpen = false"
+               class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-blue-400 transition-colors">
+              {{ item.text }}
+            </a>
+          </div>
+        </transition>
       </header>
 
       <!-- Hero Section -->
-      <Hero/>
+      <Hero />
 
       <!-- Main Content -->
       <main class="container mx-auto px-4 py-16">
         <!-- About Section -->
-        <section id="about" class="mb-20">
-          <h2 class="text-4xl font-bold mb-8 text-center text-blue-400">Acerca de mí</h2>
-          <div class="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-            <p class="text-gray-300 text-lg leading-relaxed">
-              Soy un apasionado desarrollador full-stack y estudiante de Ingeniería Informática.
-              Me encanta resolver problemas complejos y aprender nuevas tecnologías.
-              Mi objetivo es construir aplicaciones eficientes, escalables y amigables para el usuario
-              que generen un impacto positivo en la sociedad.
-            </p>
-          </div>
-        </section>
+        <AboutSection/>
 
         <!-- Skills Section -->
-        <section id="skills" class="mb-20">
-          <h2 class="text-4xl font-bold mb-8 text-center text-blue-400">Habilidades</h2>
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            <div v-for="skill in skills" :key="skill.name"
-                 class="bg-gray-800 p-6 rounded-lg shadow-lg text-center transform hover:scale-110 transition-transform duration-300">
-              <component :is="skill.icon" class="w-16 h-16 mb-4 mx-auto text-blue-400"/>
-              <span class="text-lg font-semibold text-gray-300">{{ skill.name }}</span>
-            </div>
-          </div>
-        </section>
+        <SkillSection :skills="skills"/>
 
         <!-- Projects Section -->
-        <section id="projects" class="mb-20">
-          <h2 class="text-4xl font-bold mb-8 text-center text-blue-400">Proyectos</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div v-for="project in projects" :key="project.name"
-                 class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
-              <img :src="project.image" :alt="project.name" class="w-full h-48 object-cover"/>
-              <div class="p-6">
-                <h3 class="text-2xl font-semibold mb-2 text-blue-400">{{ project.name }}</h3>
-                <p class="text-gray-400 mb-4">{{ project.description }}</p>
-                <div class="flex space-x-4">
-                  <a :href="project.github" target="_blank" rel="noopener noreferrer"
-                     class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md transition-colors flex items-center">
-                    <GitHubIcon class="w-5 h-5 mr-2"/>
-                    GitHub
-                  </a>
-                  <a :href="project.demo" target="_blank" rel="noopener noreferrer"
-                     class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md transition-colors flex items-center">
-                    <LinkIcon class="w-5 h-5 mr-2"/>
-                    Demo en vivo
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ProjectsSection :projects="projects"/>
 
         <!-- Contact Section -->
-        <section id="contact" class="mb-20">
-          <h2 class="text-4xl font-bold mb-8 text-center text-blue-400">Contáctame</h2>
-          <div class="flex flex-wrap justify-center gap-6">
-            <a href="https://www.linkedin.com/in/billy-martinez" target="_blank" rel="noopener noreferrer"
-               class="flex items-center bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-500 transition-colors">
-              <LinkedInIcon class="w-6 h-6 mr-2"/>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/billy-martinez" target="_blank" rel="noopener noreferrer"
-               class="flex items-center bg-gray-700 text-white px-6 py-3 rounded-full hover:bg-gray-600 transition-colors">
-              <GitHubIcon class="w-6 h-6 mr-2"/>
-              <span>GitHub</span>
-            </a>
-            <a href="https://www.instagram.com/billy.martinez" target="_blank" rel="noopener noreferrer"
-               class="flex items-center bg-pink-600 text-white px-6 py-3 rounded-full hover:bg-pink-500 transition-colors">
-              <InstagramIcon class="w-6 h-6 mr-2"/>
-              <span>Instagram</span>
-            </a>
-            <a href="mailto:billy.martinez@example.com"
-               class="flex items-center bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-500 transition-colors">
-              <GmailIcon class="w-6 h-6 mr-2"/>
-              <span>Envíame un correo</span>
-            </a>
-          </div>
-        </section>
+        <ContactSection :socialLinks="socialLinks"/>
       </main>
 
       <!-- Footer -->
-      <footer class="bg-gray-800 py-8">
+      <footer class="bg-gray-800 bg-opacity-50 py-8">
         <div class="container mx-auto px-4 text-center text-gray-400">
-          <p>&copy; 2023 Billy Martínez. Todos los derechos reservados.</p>
+          <p>&copy; {{ new Date().getFullYear() }} Billyflin. Todos los derechos reservados. Como si fuera mi primera pag web jajaja</p>
         </div>
       </footer>
     </div>
@@ -148,8 +83,12 @@ import {
   TypeScriptIcon,
   VueDotjsIcon
 } from 'vue3-simple-icons';
-import {LinkIcon, TerminalIcon} from "lucide-vue-next";
-import Hero from "./Hero.vue";
+import {MenuIcon, TerminalIcon, XIcon} from "lucide-vue-next";
+import Hero from "./components/Hero.vue";
+import ContactSection from "./ContactSection.vue";
+import ProjectsSection from "./ProjectsSection.vue";
+import SkillSection from "./SkillSection.vue";
+import AboutSection from "./AboutSection.vue";
 
 const blob = ref(null);
 const scrolled = ref(false);
@@ -170,7 +109,6 @@ const toggleMobileMenu = () => {
 const handleScroll = () => {
   scrolled.value = window.scrollY > 50;
 
-  // Determine active section
   const sections = ['contact', 'projects', 'skills', 'about'];
   for (const section of sections) {
     const element = document.getElementById(section);
@@ -232,21 +170,21 @@ const projects = [
     demo: 'https://weather-dashboard-demo.com',
   },
 ];
+
+const socialLinks = [
+  { name: 'LinkedIn', icon: LinkedInIcon, url: 'https://www.linkedin.com/in/billy-martinez', bgClass: 'bg-blue-600 hover:bg-blue-700' },
+  { name: 'GitHub', icon: GitHubIcon, url: 'https://github.com/billy-martinez', bgClass: 'bg-gray-700 hover:bg-gray-800' },
+  { name: 'Instagram', icon: InstagramIcon, url: 'https://www.instagram.com/billy.martinez', bgClass: 'bg-pink-600 hover:bg-pink-700' },
+  { name: 'Email', icon: GmailIcon, url: 'mailto:billy.martinez@example.com', bgClass: 'bg-red-600 hover:bg-red-700' },
+];
 </script>
 
 <style scoped>
+
 @keyframes rotate {
-  from {
-    rotate: 0deg;
-  }
-
-  50% {
-    scale: 1 1.7;
-  }
-
-  to {
-    rotate: 360deg;
-  }
+  from { rotate: 0deg; }
+  50% { scale: 1 1.5; }
+  to { rotate: 360deg; }
 }
 
 @keyframes background-pan {
@@ -266,7 +204,8 @@ const projects = [
 .blob {
   height: 20vmax;
   aspect-ratio: 1;
-  position: absolute;
+  position: fixed;
+  z-index: -3;
   left: 50%;
   top: 50%;
   translate: -50% -50%;
@@ -284,8 +223,6 @@ const projects = [
 
 .text-gradient {
   animation: background-pan 3s linear infinite;
-  font-weight: normal;
-  font-family: "Rubik", sans-serif;
   background: linear-gradient(
       to right,
       rgb(123, 31, 162),
@@ -303,18 +240,16 @@ const projects = [
   height: 100%;
   width: 100%;
   position: absolute;
-  z-index: 2;
+  z-index: -2;
   backdrop-filter: blur(11vmax);
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 </style>

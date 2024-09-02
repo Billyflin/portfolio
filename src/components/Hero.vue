@@ -48,8 +48,8 @@
 
 <script setup>
 import {TerminalIcon} from 'lucide-vue-next';
-import MagicTextSpan from "./components/MagicTextSpan.vue";
-import ChangingText from "./components/ChangingText.vue";
+import MagicTextSpan from "./MagicTextSpan.vue";
+import ChangingText from "./ChangingText.vue";
 </script>
 
 <style scoped>
