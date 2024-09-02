@@ -4,7 +4,7 @@
       <div class="flex flex-col md:flex-row">
         <!-- Imagen ocupando más espacio en pantallas pequeñas -->
         <div class="md:w-2/5 bg-gray-700">
-          <div class="relative h-full">
+          <div class="relative h-64 md:h-full">
             <img
                 :src="billyflin"
                 alt="Billy Martínez"
@@ -23,11 +23,11 @@
             <div class="space-y-3 mb-8">
               <div class="flex items-center text-gray-300">
                 <MapPinIcon class="w-5 h-5 mr-3 text-gray-400" />
-                <a href="https://www.ufro.cl" >Universidad de la Frontera, Chile</a>
+                <a href="https://www.ufro.cl">Universidad de la Frontera, Chile</a>
               </div>
               <div class="flex items-center text-gray-300">
                 <MailIcon class="w-5 h-5 mr-3 text-gray-400" />
-                <a href="mailto:billymartinezc@gmail.com">billymartinezc@gmail.com</a>
+                <a href="mailto:billymartinezc@gmail.com">Billymartinezc@gmail.com</a>
               </div>
             </div>
             <!-- Ocultar este bloque en pantallas pequeñas -->
@@ -39,7 +39,7 @@
                 Mi experiencia abarca desde el desarrollo de aplicaciones para bancos digitales hasta la investigación en realidad virtual para el campo de la enfermería. Me especializo en tecnologías como Vue.js, Spring, y Kotlin, y tengo experiencia en despliegue de aplicaciones utilizando AWS y Google Cloud.
               </p>
               <p class="animate-fade-in" style="animation-delay: 400ms;">
-                Actualmente, estoy explorando Kotlin Multiplataforma para el desarrollo de aplicaciones móviles. Estoy emocionado por las oportunidades que me esperan después de graduarme y siempre estoy buscando nuevos desafíos donde pueda seguir creciendo y aprendiendo.
+                Actualmente, estoy explorando <magic-text-span texto-resaltar="Kotlin Multiplataforma"></magic-text-span> para el desarrollo de aplicaciones móviles. Estoy emocionado por las oportunidades que me esperan después de graduarme y siempre estoy buscando nuevos desafíos donde pueda seguir creciendo y aprendiendo.
               </p>
             </div>
           </div>
@@ -62,10 +62,12 @@
 
 
 
+
 <script setup>
 import { ref } from 'vue';
 import { MapPinIcon, MailIcon, GithubIcon, LinkedinIcon } from 'lucide-vue-next';
 import billyflin from '../assets/img/file.png';
+import MagicTextSpan from "./MagicTextSpan.vue";
 
 const imageLoaded = ref(false);
 

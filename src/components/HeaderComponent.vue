@@ -23,10 +23,10 @@
     </nav>
     <!-- Mobile Menu -->
     <transition name="slide-fade">
-      <div v-if="mobileMenuOpen" class="md:hidden bg-gray-800 py-2">
+      <div v-if="mobileMenuOpen" class="md:hidden bg-gray-900 py-2">
         <a v-for="item in navItems" :key="item.href" :href="item.href"
            @click="closeMobileMenu"
-           class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-blue-400 transition-colors">
+           class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-indigo-400 transition-colors">
           {{ item.text }}
         </a>
       </div>
