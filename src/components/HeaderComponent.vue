@@ -11,7 +11,7 @@
         </div>
         <div class="hidden md:flex space-x-6">
           <a v-for="item in navItems" :key="item.href" :href="item.href"
-             :class="['text-lg transition-colors', {'text-blue-400': activeSection === item.href.slice(1), 'text-gray-300 hover:text-blue-400': activeSection !== item.href.slice(1)}]">
+             :class="['text-lg transition-colors', {'text-gradient text-roboto': activeSection === item.href.slice(1), 'text-gray-300 text-roboto  hover:text-amber-200': activeSection !== item.href.slice(1)}]">
             {{ item.text }}
           </a>
         </div>
@@ -96,6 +96,7 @@ onUnmounted(() => {
 
 .text-gradient {
   animation: background-pan 3s linear infinite;
+  font-family: "Roboto", sans-serif;
   background: linear-gradient(
       to right,
       rgb(123, 31, 162),
@@ -109,6 +110,10 @@ onUnmounted(() => {
   white-space: nowrap;
 }
 
+.text-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: .5; }
@@ -116,16 +121,5 @@ onUnmounted(() => {
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: all 0.3s ease;
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateY(-20px);
-  opacity: 0;
 }
 </style>
