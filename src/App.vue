@@ -133,7 +133,7 @@ const projects = [
     description: 'Un ecosistema completo para la gestión de residuos en la ciudad de Temuco. Gestionando Contenedores Inteligentes, Reciclaje y Rutas de Recolección.',
     image: EcoSense,
     github: 'https://github.com/billyflin',
-    demo: '',
+    demo: 'https://billyflin.github.io/ecosense/',
     technologies: ['Kotlin', 'Firebase', 'Crashlytics', 'Firestore', 'Google Maps','Arduino','Raspberry Pi','Docker'],
   },
   {
