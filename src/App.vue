@@ -28,8 +28,6 @@
         <!-- Projects Section -->
 <!--        <ProjectsSection :projects="projects" />-->
 
-        <!-- Contact Section -->
-        <ContactSection :social-links="socialLinks" />
 
 <!--        Certifications Section-->
         <CertificationsSection />
@@ -56,15 +54,10 @@ import {
   VueDotjsIcon
 } from 'vue3-simple-icons';
 import Hero from "./components/Hero.vue";
-import ContactSection from "./components/ContactSection.vue";
-import ProjectsSection from "./components/ProjectsSection.vue";
 import SkillSection from "./components/SkillSection.vue";
 import AboutSection from "./components/AboutSection.vue";
 import FooterComponent from "./components/FooterComponent.vue";
 import HeaderComponent from "./components/HeaderComponent.vue";
-import meme  from "./assets/img/Meme.jpg"
-import logoHapp from "./assets/img/LogoHapp.svg"
-import happ from "./assets/img/Happ.png"
 import ufroSus from "./assets/img/UfroSus.png"
 import CertificationsSection from "./components/CertificationsSection.vue";
 import EcoSense from "./assets/img/EcoSenseLogo.svg"
@@ -76,9 +69,7 @@ const activeSection = ref('');
 const navItems = [
   { href: '#about', text: 'Acerca de mí' },
   { href: '#skills', text: 'Habilidades' },
-  { href: '#projects', text: 'Proyectos' },
   {href: '#certifications', text: 'Certificaciones'},
-  { href: '#contact', text: 'Contacto' },
 ];
 
 const updateActiveSection = (section) => {
@@ -117,49 +108,6 @@ onUnmounted(() => {
   window.removeEventListener('pointermove', handleBlobAnimation);
   window.removeEventListener('scroll', handleScroll);
 });
-let skills, projects, socialLinks;
-skills = [
-  {name: 'Vue.js', icon: VueDotjsIcon},
-  {name: 'React', icon: ReactIcon},
-  {name: 'JavaScript', icon: JavaScriptIcon},
-  {name: 'TypeScript', icon: TypeScriptIcon},
-  {name: 'Node.js', icon: NodeDotjsIcon},
-  {name: 'Python', icon: PythonIcon},
-];
-projects = [
-  {
-    name: 'EcoSense',
-    description: 'Un ecosistema completo para la gestión de residuos en la ciudad de Temuco. Gestionando Contenedores Inteligentes, Reciclaje y Rutas de Recolección.',
-    image: EcoSense,
-    github: 'https://github.com/billyflin',
-    demo: 'https://ecosense.cl/',
-    technologies: ['Kotlin', 'Firebase', 'Crashlytics', 'Firestore', 'Google Maps', 'Arduino', 'Raspberry Pi', 'Docker'],
-  },
-  {
-    name: 'Ufro Sustentable',
-    description: 'Una aplicación nativa para la gestión de residuos en la Universidad de la Frontera.',
-    image: ufroSus,
-    github: 'https://github.com/Billyflin/UfroSustentableApp',
-    demo: 'https://www.linkedin.com/posts/billyflin_desarrollodesoftware-reciclaje-sostenibilidad-activity-7216289603790532608-Ro_L?utm_source=share&utm_medium=member_desktop',
-    technologies: ['Kotlin', 'Firebase', 'Crashlytics', 'Firestore', 'Google Maps'],
-  },
-];
-socialLinks = [
-  {
-    name: 'LinkedIn',
-    icon: LinkedInIcon,
-    url: 'https://www.linkedin.com/in/billyflin',
-    bgClass: 'bg-blue-600 hover:bg-blue-700'
-  },
-  {name: 'GitHub', icon: GitHubIcon, url: 'https://github.com/Billyflin', bgClass: 'bg-gray-700 hover:bg-gray-800'},
-  {
-    name: 'Instagram',
-    icon: InstagramIcon,
-    url: 'https://www.instagram.com/billyfliin/',
-    bgClass: 'bg-pink-600 hover:bg-pink-700'
-  },
-  {name: 'Email', icon: GmailIcon, url: 'mailto:billymartinezc@gmail.com', bgClass: 'bg-red-600 hover:bg-red-700'},
-];
 </script>
 
 <style scoped>

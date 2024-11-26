@@ -5,30 +5,42 @@
   >
     <nav class="container mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
+        <!-- Logo -->
         <div class="flex items-center">
           <TerminalIcon class="w-8 h-8 text-gradient mr-2 animate-pulse"/>
-          <h1 class="text-2xl md:text-3xl font-bold text-gradient">Billyflin</h1>
+          <h1 class="text-2xl md:text-3xl font-bold text-gradient hover:scale-105 transition-transform">Billyflin</h1>
         </div>
+
+        <!-- Desktop Navigation -->
         <div class="hidden md:flex space-x-6">
           <a v-for="item in navItems" :key="item.href" :href="item.href"
-             :class="['text-lg transition-colors', {'text-gradient text-roboto': activeSection === item.href.slice(1), 'text-gray-300 text-roboto  hover:text-amber-200': activeSection !== item.href.slice(1)}]">
+             :class="['relative text-lg transition-colors group',
+                      {'text-gradient font-semibold': activeSection === item.href.slice(1),
+                       'text-gray-300 hover:text-amber-200': activeSection !== item.href.slice(1)}]">
             {{ item.text }}
+            <!-- Underline animation -->
+            <span v-if="activeSection === item.href.slice(1)" class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
           </a>
         </div>
+
+        <!-- Mobile Menu Button -->
         <button @click="toggleMobileMenu" class="md:hidden text-gray-300 hover:text-blue-400">
           <MenuIcon v-if="!mobileMenuOpen" class="h-6 w-6"/>
           <XIcon v-else class="h-6 w-6"/>
         </button>
       </div>
     </nav>
+
     <!-- Mobile Menu -->
     <transition name="slide-fade">
-      <div v-if="mobileMenuOpen" class="md:hidden bg-gray-900 py-2">
-        <a v-for="item in navItems" :key="item.href" :href="item.href"
-           @click="closeMobileMenu"
-           class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-indigo-400 transition-colors">
-          {{ item.text }}
-        </a>
+      <div v-if="mobileMenuOpen" class="md:hidden bg-gray-900 py-4 px-4 absolute top-0 left-0 right-0 h-screen">
+        <div class="flex flex-col items-center space-y-6">
+          <a v-for="item in navItems" :key="item.href" :href="item.href"
+             @click="closeMobileMenu"
+             class="block text-xl text-gray-300 hover:bg-gray-700 hover:text-indigo-400 px-6 py-3 rounded-lg transition-colors w-full text-center">
+            {{ item.text }}
+          </a>
+        </div>
       </div>
     </transition>
   </header>
@@ -83,12 +95,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-@keyframes rotate {
-  from { rotate: 0deg; }
-  50% { scale: 1 1.5; }
-  to { rotate: 360deg; }
-}
-
 @keyframes background-pan {
   from { background-position: 0% center; }
   to { background-position: -200% center; }
@@ -110,16 +116,27 @@ onUnmounted(() => {
   white-space: nowrap;
 }
 
-.text-roboto {
-  font-family: 'Roboto', sans-serif;
+.group:hover .text-gradient {
+  background: linear-gradient(to right, rgb(255, 99, 71), rgb(255, 140, 0));
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: .5; }
+  50% { opacity: 0.5; }
 }
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
 }
 </style>
