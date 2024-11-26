@@ -5,6 +5,15 @@
         <!-- Imagen ocupando más espacio en pantallas pequeñas -->
         <div class="md:w-2/5 bg-gray-700">
           <div class="relative h-64 md:h-full">
+            <!-- Loader -->
+            <div
+                v-if="!imageLoaded"
+                class="absolute inset-0 flex items-center justify-center bg-gray-900/50"
+            >
+              <div class="loader"></div>
+            </div>
+
+            <!-- Imagen -->
             <img
                 :src="billyflin"
                 alt="Billy Martínez"
@@ -12,8 +21,11 @@
                 @load="onImageLoad"
                 :class="{ 'opacity-0 scale-105': !imageLoaded, 'opacity-100 scale-100': imageLoaded }"
             />
+
+            <!-- Gradiente -->
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-gray-900/10 to-transparent"></div>
           </div>
+
         </div>
         <!-- Contenido con ocultamiento en pantallas pequeñas -->
         <div class="p-6 md:p-8 w-full md:w-3/5 flex flex-col justify-between">
