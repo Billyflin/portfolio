@@ -26,7 +26,7 @@
         <SkillSection :skills="skills" />
 
         <!-- Projects Section -->
-        <ProjectsSection :projects="projects" />
+<!--        <ProjectsSection :projects="projects" />-->
 
         <!-- Contact Section -->
         <ContactSection :social-links="socialLinks" />
@@ -117,32 +117,23 @@ onUnmounted(() => {
   window.removeEventListener('pointermove', handleBlobAnimation);
   window.removeEventListener('scroll', handleScroll);
 });
-
-const skills = [
-  { name: 'Vue.js', icon: VueDotjsIcon },
-  { name: 'React', icon: ReactIcon },
-  { name: 'JavaScript', icon: JavaScriptIcon },
-  { name: 'TypeScript', icon: TypeScriptIcon },
-  { name: 'Node.js', icon: NodeDotjsIcon },
-  { name: 'Python', icon: PythonIcon },
+let skills, projects, socialLinks;
+skills = [
+  {name: 'Vue.js', icon: VueDotjsIcon},
+  {name: 'React', icon: ReactIcon},
+  {name: 'JavaScript', icon: JavaScriptIcon},
+  {name: 'TypeScript', icon: TypeScriptIcon},
+  {name: 'Node.js', icon: NodeDotjsIcon},
+  {name: 'Python', icon: PythonIcon},
 ];
-
-const projects = [
+projects = [
   {
     name: 'EcoSense',
     description: 'Un ecosistema completo para la gestión de residuos en la ciudad de Temuco. Gestionando Contenedores Inteligentes, Reciclaje y Rutas de Recolección.',
     image: EcoSense,
     github: 'https://github.com/billyflin',
-    demo: 'https://billyflin.github.io/ecosense/',
-    technologies: ['Kotlin', 'Firebase', 'Crashlytics', 'Firestore', 'Google Maps','Arduino','Raspberry Pi','Docker'],
-  },
-  {
-    name: 'App de Gestión de Propiedades',
-    description: 'Una aplicación de gestión de propiedades construida con Vue y Spring.',
-    image: happ,
-    github: 'https://github.com/billyflin',
-    demo: 'https://desa.happrent.cl/',
-    technologies: ['Vue.js', 'Spring Boot', 'PostgreSQL', 'Docker', 'AWS'],
+    demo: 'https://ecosense.cl/',
+    technologies: ['Kotlin', 'Firebase', 'Crashlytics', 'Firestore', 'Google Maps', 'Arduino', 'Raspberry Pi', 'Docker'],
   },
   {
     name: 'Ufro Sustentable',
@@ -153,12 +144,21 @@ const projects = [
     technologies: ['Kotlin', 'Firebase', 'Crashlytics', 'Firestore', 'Google Maps'],
   },
 ];
-
-const socialLinks = [
-  { name: 'LinkedIn', icon: LinkedInIcon, url: 'https://www.linkedin.com/in/billyflin', bgClass: 'bg-blue-600 hover:bg-blue-700' },
-  { name: 'GitHub', icon: GitHubIcon, url: 'https://github.com/Billyflin', bgClass: 'bg-gray-700 hover:bg-gray-800' },
-  { name: 'Instagram', icon: InstagramIcon, url: 'https://www.instagram.com/billyfliin/', bgClass: 'bg-pink-600 hover:bg-pink-700' },
-  { name: 'Email', icon: GmailIcon, url: 'mailto:billymartinezc@gmail.com', bgClass: 'bg-red-600 hover:bg-red-700' },
+socialLinks = [
+  {
+    name: 'LinkedIn',
+    icon: LinkedInIcon,
+    url: 'https://www.linkedin.com/in/billyflin',
+    bgClass: 'bg-blue-600 hover:bg-blue-700'
+  },
+  {name: 'GitHub', icon: GitHubIcon, url: 'https://github.com/Billyflin', bgClass: 'bg-gray-700 hover:bg-gray-800'},
+  {
+    name: 'Instagram',
+    icon: InstagramIcon,
+    url: 'https://www.instagram.com/billyfliin/',
+    bgClass: 'bg-pink-600 hover:bg-pink-700'
+  },
+  {name: 'Email', icon: GmailIcon, url: 'mailto:billymartinezc@gmail.com', bgClass: 'bg-red-600 hover:bg-red-700'},
 ];
 </script>
 

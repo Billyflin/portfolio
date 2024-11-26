@@ -26,7 +26,7 @@
 import { ref } from 'vue';
 import {
   AmazonWebServicesIcon,
-  ArduinoIcon,
+  ArduinoIcon, CloudflareIcon,
   CPlusPlusIcon,
   DockerIcon,
   FirebaseIcon, GitHubIcon,
@@ -67,7 +67,10 @@ const documentationUrls = {
   'Git': 'https://git-scm.com/doc',
   'CI/CD': 'https://en.wikipedia.org/wiki/CI/CD',
   'Arduino': 'https://www.arduino.cc/reference/en/',
-  'Github': 'https://docs.github.com/en'
+  'Github': 'https://docs.github.com/en',
+  'CloudFlare': 'https://developers.cloudflare.com/',
+
+
 };
 
 // Función para obtener la URL de la documentación
@@ -103,6 +106,7 @@ const skillCategories = ref([
       {name: 'Firebase', icon: FirebaseIcon},
       {name: 'AWS', icon: AmazonWebServicesIcon},
       {name: 'Google Cloud', icon: GoogleCloudIcon},
+      {name: 'CloudFlare', icon: CloudflareIcon},
       {name: 'PostgreSQL', icon: PostgreSqlIcon},
       {name: 'MySQL', icon: MySqlIcon},
     ]
