@@ -59,7 +59,7 @@ const certifications = [
     description: 'Certificación que valida la capacidad de analizar datos y tomar decisiones basadas en ellos.',
     date: 'Noviembre 2024',
     icon: GoogleDataflowIcon,
-    lin: 'https://coursera.org/share/a27620eae606cf00581ab24eb97ecf59'
+    link: 'https://coursera.org/share/a27620eae606cf00581ab24eb97ecf59'
 
   }
     ,
