@@ -29,10 +29,10 @@ export default {
   },
   methods: {
     onAnimationComplete() {
-      this.animationComplete = true; // Activa la transición al completar
+      this.animationComplete = true; // Inicia el fade-out
       setTimeout(() => {
-        this.$emit("close"); // Emite un evento al padre para ocultar el componente
-      }, 1500); // Espera a que termine la transición antes de cerrar
+        this.$emit("close"); // Emite el evento para notificar al padre
+      }, 2000); // Espera que la transición termine (igual a `transition` en CSS)
     },
   },
 };
@@ -48,13 +48,13 @@ export default {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, rgba(34, 0, 50, 0.94), rgba(173, 129, 205, 0.99), rgba(17, 0, 58, 0.99)); /* Fondo gradiente */
-  transition: opacity 1s ease-in-out; /* Transición suave para la opacidad */
+  transition: opacity 2s ease-in-out; /* Transición suave */
   opacity: 1;
 }
 
 .animation-container.fade-out {
-  opacity: 0; /* Desaparece el fondo */
-  z-index: -10;
+  opacity: 0; /* Desaparece */
+  pointer-events: none; /* Permite interactuar con elementos detrás */
 }
 
 .responsive-animation {
