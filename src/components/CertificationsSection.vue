@@ -48,6 +48,13 @@ import { ServerIcon,LinkIcon } from 'lucide-vue-next';
 import {Amazonec2Icon, Css3Icon, GoogleDataflowIcon, Html5Icon} from "vue3-simple-icons";
 
 const certifications = [
+  {
+    name:'Google Data Analytics: Ask Questions to Make Data-Driven Decisions',
+    description: 'Certificación que valida la capacidad de hacer preguntas y tomar decisiones basadas en datos.',
+    date: 'Noviembre 2024',
+    icon: GoogleDataflowIcon,
+    link: 'https://coursera.org/share/4f455dc94f1d7dcdb508f641b9cd20ad'
+  },
   {name: 'Google Data Analytics: Data, Data, Everywhere',
     description: 'Certificación que valida la capacidad de analizar datos y tomar decisiones basadas en ellos.',
     date: 'Noviembre 2024',
