@@ -54,6 +54,7 @@ export default {
 
 .animation-container.fade-out {
   opacity: 0; /* Desaparece el fondo */
+  z-index: -10;
 }
 
 .responsive-animation {

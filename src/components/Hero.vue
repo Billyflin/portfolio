@@ -42,7 +42,7 @@
             href="/Billy_Martinez_CV.pdf"
             target="_blank"
             download
-            class="inline-block flex items-center bg-gradient-to-r from-green-500 to-blue-600 text-white px-6 py-3 rounded-full font-bold hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 text-sm sm:text-base shadow-lg space-x-2"
+            class="inline-block flex items-center bg-gradient-to-r from-green-500 to-blue-600 text-white px-6 py-3 rounded-full font-bold hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-125 text-xl-center sm:text-base shadow-lg space-x-2"
         >
           <FileDownIcon class="w-5 h-5" />
           <span>Descargar mi CV</span>
