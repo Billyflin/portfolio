@@ -5,7 +5,7 @@
         speed="1"
         :loop="false"
         :autoplay="true"
-        class="responsive-animation"
+        class="fullscreen-animation"
         @complete="onAnimationComplete"
     ></lottie-player>
   </div>
@@ -32,33 +32,53 @@ export default {
       this.animationComplete = true; // Inicia el fade-out
       setTimeout(() => {
         this.$emit("close"); // Emite el evento para notificar al padre
-      }, 2000); // Espera que la transición termine (igual a `transition` en CSS)
+      }, 2000); // Espera que la transición termine
     },
   },
 };
 </script>
 
 <style scoped>
+/* Contenedor de la animación */
 .animation-container {
-  width: 100%;
-  height: 100%;
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: 12;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, rgba(34, 0, 50, 0.94), rgba(173, 129, 205, 0.99), rgba(17, 0, 58, 0.99)); /* Fondo gradiente */
-  transition: opacity 2s ease-in-out; /* Transición suave */
+  overflow: hidden; /* Evita scroll si el Lottie es demasiado grande */
+  transition: opacity 2s ease-in-out; /* Transición para opacidad */
   opacity: 1;
 }
 
 .animation-container.fade-out {
-  opacity: 0; /* Desaparece */
-  pointer-events: none; /* Permite interactuar con elementos detrás */
+  opacity: 0;
+  pointer-events: none;
 }
 
-.responsive-animation {
-  width: 100%;
-  height: auto;
+/* Lottie a pantalla completa */
+.fullscreen-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 150vh; /* Ajustar para que el Lottie siga cubriendo toda la pantalla */
+  height: 150vw;
+}
+
+/* Rotación en móviles */
+@media (max-width: 768px) {
+  .fullscreen-animation {
+    transform: translate(-50%, -50%) rotate(270deg); /* Rotar 90 grados */
+    width: 150vh; /* Ajustar para que el Lottie siga cubriendo toda la pantalla */
+    height: 150vw;
+  }
 }
 </style>

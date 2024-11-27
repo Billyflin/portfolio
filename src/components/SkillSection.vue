@@ -1,19 +1,27 @@
 <template>
-  <section id="skills" class="py-20">
+  <section id="skills" class="py-10 md:py-20">
     <div class="container mx-auto px-4">
-      <h2 class="text-5xl font-bold mb-16 text-center text-gradient">Mis Habilidades</h2>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div v-for="category in skillCategories" :key="category.name"
-             class="bg-gray-800 bg-opacity-90 rounded-xl p-8 shadow-lg backdrop-blur-sm transform  transition-all duration-300">
-          <h3 class="text-3xl font-semibold mb-6 text-white border-b border-gray-700 pb-2">{{ category.name }}</h3>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            <a v-for="skill in category.skills" :key="skill.name"
-               :href="getDocumentationUrl(skill.name)"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="flex flex-col items-center p-4 bg-gray-700 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
-              <component :is="skill.icon" class="w-12 h-12 mb-3 text-gradient skill-icon"/>
-              <span class="text-sm font-medium text-white text-center">{{ skill.name }}</span>
+      <h2 class="text-4xl md:text-5xl font-bold mb-10 md:mb-16 text-center text-gradient">Mis Habilidades</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        <div
+            v-for="category in skillCategories"
+            :key="category.name"
+            class="bg-gray-800 bg-opacity-90 rounded-xl p-6 md:p-8 shadow-lg backdrop-blur-sm transform transition-all duration-300"
+        >
+          <h3 class="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-white border-b border-gray-700 pb-2">
+            {{ category.name }}
+          </h3>
+          <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:gap-6">
+            <a
+                v-for="skill in category.skills"
+                :key="skill.name"
+                :href="getDocumentationUrl(skill.name)"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex flex-col items-center p-3 md:p-4 bg-gray-700 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300"
+            >
+              <component :is="skill.icon" class="w-10 h-10 md:w-12 md:h-12 mb-2 md:mb-3 text-gradient skill-icon" />
+              <span class="text-xs md:text-sm font-medium text-white text-center">{{ skill.name }}</span>
             </a>
           </div>
         </div>
@@ -21,6 +29,7 @@
     </div>
   </section>
 </template>
+
 
 <script setup>
 import { ref } from 'vue';

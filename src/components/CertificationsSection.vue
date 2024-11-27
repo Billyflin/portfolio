@@ -1,21 +1,39 @@
 <template>
-  <section id="certifications" class="py-20 ">
+  <section id="certifications" class="py-10 md:py-20">
     <div class="container mx-auto px-4">
-      <h2 class="text-5xl font-bold mb-16 text-center text-gradient">Certificaciones</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div v-for="cert in certifications" :key="cert.name"
-             class="bg-gray-800 rounded-xl p-6 shadow-lg transform hover:scale-105 transition-all duration-300">
-          <div class="flex items-center mb-4">
-            <component :is="cert.icon" class="w-12 h-12 mr-4 text-gradient" />
-            <h3 class="text-2xl font-semibold text-white">{{ cert.name }}</h3>
+      <h2 class="text-4xl md:text-5xl font-bold mb-10 md:mb-16 text-center text-gradient">
+        Certificaciones
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div
+            v-for="cert in certifications"
+            :key="cert.name"
+            class="bg-gray-800 rounded-xl p-5 md:p-6 shadow-lg transform hover:scale-105 transition-all duration-300"
+        >
+          <div class="flex items-center mb-3 md:mb-4">
+            <component
+                :is="cert.icon"
+                class="w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4 text-gradient"
+            />
+            <h3 class="text-xl md:text-2xl font-semibold text-white">
+              {{ cert.name }}
+            </h3>
           </div>
-          <p class="text-gray-300 mb-4">{{ cert.description }}</p>
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-400">{{ cert.date }}</span>
-            <a :href="cert.link" target="_blank" rel="noopener noreferrer"
-               class="bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-md transition-colors flex items-center group">
-              <LinkIcon class="w-5 h-5 mr-2 group-hover:animate-pulse" />
-              Ver certificado
+          <p class="text-gray-300 mb-3 md:mb-4 text-sm md:text-base">
+            {{ cert.description }}
+          </p>
+          <div class="flex justify-between items-center flex-wrap">
+            <span class="text-xs md:text-sm text-gray-400">
+              {{ cert.date }}
+            </span>
+            <a
+                :href="cert.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 md:px-4 md:py-2 rounded-md transition-colors flex items-center group"
+            >
+              <LinkIcon class="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2 group-hover:animate-pulse" />
+              <span class="text-xs md:text-sm">Ver certificado</span>
             </a>
           </div>
         </div>
@@ -23,6 +41,7 @@
     </div>
   </section>
 </template>
+
 
 <script setup>
 import { ServerIcon,LinkIcon } from 'lucide-vue-next';
