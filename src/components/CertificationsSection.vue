@@ -45,9 +45,17 @@
 
 <script setup>
 import { ServerIcon,LinkIcon } from 'lucide-vue-next';
-import {Amazonec2Icon, Css3Icon, Html5Icon} from "vue3-simple-icons";
+import {Amazonec2Icon, Css3Icon, GoogleDataflowIcon, Html5Icon} from "vue3-simple-icons";
 
 const certifications = [
+  {name: 'Google Data Analytics: Data, Data, Everywhere',
+    description: 'Certificación que valida la capacidad de analizar datos y tomar decisiones basadas en ellos.',
+    date: 'Noviembre 2024',
+    icon: GoogleDataflowIcon,
+    lin: 'https://coursera.org/share/a27620eae606cf00581ab24eb97ecf59'
+
+  }
+    ,
   {
     name: 'Codecademy - CSS',
     description: 'Certificación que valida la capacidad de usar CSS para diseñar sitios web.',
