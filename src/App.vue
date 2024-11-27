@@ -3,16 +3,12 @@
     <!-- Blob Background -->
     <div ref="blob" class="blob"></div>
     <div class="blur"></div>
+    <LottieAnimation is-visible></LottieAnimation>
 
     <!-- Main Content -->
     <div class="relative z-10">
       <!-- Header -->
-      <HeaderComponent
-          :nav-items="navItems"
-          :scrolled="scrolled"
-          :active-section="activeSection"
-          @update:active-section="updateActiveSection"
-      />
+      <HeaderComponent/>
 
       <!-- Hero Section -->
       <Hero/>
@@ -44,32 +40,10 @@ import AboutSection from "./components/AboutSection.vue";
 import FooterComponent from "./components/FooterComponent.vue";
 import HeaderComponent from "./components/HeaderComponent.vue";
 import CertificationsSection from "./components/CertificationsSection.vue";
+import LottieAnimation from "./components/LottieAnimation.vue";
+import LottieLoader from "./components/LottieLoader.vue";
 
 const blob = ref(null);
-const scrolled = ref(false);
-const activeSection = ref('');
-
-const navItems = [
-  {href: '#about', text: 'Acerca de mí'},
-  {href: '#skills', text: 'Habilidades'},
-  {href: '#certifications', text: 'Certificaciones'},
-];
-
-const updateActiveSection = (section) => {
-  activeSection.value = section;
-};
-
-const handleScroll = () => {
-  scrolled.value = window.scrollY > 50;
-  const sections = ['contact','certifications', 'skills', 'about'];
-  for (const section of sections) {
-    const element = document.getElementById(section);
-    if (element && window.scrollY >= element.offsetTop - 100) {
-      updateActiveSection(section);
-      break;
-    }
-  }
-};
 
 const handleBlobAnimation = (event) => {
   const {clientX, clientY} = event;
@@ -133,10 +107,4 @@ onUnmounted(() => {
   backdrop-filter: blur(11vmax);
 }
 
-.transition-container{
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 2;
-}
 </style>

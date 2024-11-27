@@ -50,12 +50,14 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { TerminalIcon, MenuIcon, XIcon } from 'lucide-vue-next';
 
-const props = defineProps({
-  navItems: {
-    type: Array,
-    required: true
-  }
-});
+
+
+const navItems = [
+  {href: '#about', text: 'Acerca de mí'},
+  {href: '#skills', text: 'Habilidades'},
+  {href: '#certifications', text: 'Certificaciones'},
+];
+
 
 const emit = defineEmits(['update:activeSection']);
 
@@ -71,10 +73,16 @@ const closeMobileMenu = () => {
   mobileMenuOpen.value = false;
 };
 
+const updateActiveSection = (section) => {
+  activeSection.value = section;
+};
+
+
+
 const handleScroll = () => {
   scrolled.value = window.scrollY > 50;
 
-  const sections = ['contact', 'projects', 'skills', 'about'];
+  const sections = ['contact', 'projects', 'certifications','skills', 'about'];
   for (const section of sections) {
     const element = document.getElementById(section);
     if (element && window.scrollY >= element.offsetTop - 100) {
@@ -127,16 +135,5 @@ onUnmounted(() => {
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: all 0.3s ease;
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateY(-10px);
-  opacity: 0;
 }
 </style>
