@@ -47,14 +47,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, rgba(15, 7, 19, 0.99), rgba(255, 255, 255, 0.99)); /* Fondo gradiente */
-  transition: opacity 0.5s ease-in-out; /* Transición suave para la opacidad */
+  background: linear-gradient(135deg, rgba(34, 0, 50, 0.94), rgba(173, 129, 205, 0.99), rgba(17, 0, 58, 0.99)); /* Fondo gradiente */
+  transition: opacity 1s ease-in-out; /* Transición suave para la opacidad */
   opacity: 1;
 }
 
 .animation-container.fade-out {
   opacity: 0; /* Desaparece el fondo */
-  z-index: -1;
 }
 
 .responsive-animation {
