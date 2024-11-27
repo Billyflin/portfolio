@@ -44,9 +44,8 @@ import {
   TypeScriptIcon,
   VueDotjsIcon
 } from 'vue3-simple-icons';
-
-// Definir las URL de la documentación
-const documentationUrls = {
+let documentationUrls, getDocumentationUrl, skillCategories;
+documentationUrls = {
   'JavaScript': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
   'TypeScript': 'https://www.typescriptlang.org/docs/',
   'Python': 'https://docs.python.org/3/',
@@ -72,13 +71,10 @@ const documentationUrls = {
 
 
 };
-
-// Función para obtener la URL de la documentación
-const getDocumentationUrl = (skillName) => {
+getDocumentationUrl = (skillName) => {
   return documentationUrls[skillName] || '#';
 };
-
-const skillCategories = ref([
+skillCategories = ref([
   {
     name: 'Lenguajes de Programación',
     skills: [
@@ -118,7 +114,7 @@ const skillCategories = ref([
       {name: 'Git', icon: GitIcon},
       {name: 'CI/CD', icon: RocketIcon},
       {name: 'Arduino', icon: ArduinoIcon},
-      {name: 'Github' , icon: GitHubIcon},
+      {name: 'Github', icon: GitHubIcon},
     ]
   },
 ]);

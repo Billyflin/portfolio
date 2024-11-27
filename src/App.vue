@@ -15,60 +15,43 @@
       />
 
       <!-- Hero Section -->
-      <Hero />
+      <Hero/>
 
       <!-- Main Content -->
       <main class="container mx-auto px-4 py-16">
         <!-- About Section -->
-        <AboutSection />
+        <AboutSection/>
 
         <!-- Skills Section -->
-        <SkillSection :skills="skills" />
-
-        <!-- Projects Section -->
-<!--        <ProjectsSection :projects="projects" />-->
+        <SkillSection/>
 
 
-<!--        Certifications Section-->
-        <CertificationsSection />
+        <!-- Certifications Section-->
+        <CertificationsSection/>
       </main>
 
       <!-- Footer -->
-      <FooterComponent />
+      <FooterComponent/>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import {
-  GitHubIcon,
-  GmailIcon,
-  InstagramIcon,
-  JavaScriptIcon,
-  LinkedInIcon,
-  NodeDotjsIcon,
-  PythonIcon,
-  ReactIcon,
-  TypeScriptIcon,
-  VueDotjsIcon
-} from 'vue3-simple-icons';
+import {ref, onMounted, onUnmounted} from 'vue';
 import Hero from "./components/Hero.vue";
 import SkillSection from "./components/SkillSection.vue";
 import AboutSection from "./components/AboutSection.vue";
 import FooterComponent from "./components/FooterComponent.vue";
 import HeaderComponent from "./components/HeaderComponent.vue";
-import ufroSus from "./assets/img/UfroSus.png"
 import CertificationsSection from "./components/CertificationsSection.vue";
-import EcoSense from "./assets/img/EcoSenseLogo.svg"
 
 const blob = ref(null);
 const scrolled = ref(false);
 const activeSection = ref('');
 
 const navItems = [
-  { href: '#about', text: 'Acerca de mí' },
-  { href: '#skills', text: 'Habilidades' },
+  {href: '#about', text: 'Acerca de mí'},
+  {href: '#skills', text: 'Habilidades'},
   {href: '#certifications', text: 'Certificaciones'},
 ];
 
@@ -78,8 +61,7 @@ const updateActiveSection = (section) => {
 
 const handleScroll = () => {
   scrolled.value = window.scrollY > 50;
-
-  const sections = ['contact', 'projects', 'skills', 'about'];
+  const sections = ['contact','certifications', 'skills', 'about'];
   for (const section of sections) {
     const element = document.getElementById(section);
     if (element && window.scrollY >= element.offsetTop - 100) {
@@ -90,11 +72,11 @@ const handleScroll = () => {
 };
 
 const handleBlobAnimation = (event) => {
-  const { clientX, clientY } = event;
+  const {clientX, clientY} = event;
   blob.value.animate({
     left: `${clientX}px`,
     top: `${clientY}px`
-  }, { duration: 3000, fill: "forwards" });
+  }, {duration: 3000, fill: "forwards"});
 };
 
 onMounted(() => {
@@ -112,9 +94,15 @@ onUnmounted(() => {
 
 <style scoped>
 @keyframes rotate {
-  from { rotate: 0deg; }
-  50% { scale: 1 1.5; }
-  to { rotate: 360deg; }
+  from {
+    rotate: 0deg;
+  }
+  50% {
+    scale: 1 1.5;
+  }
+  to {
+    rotate: 360deg;
+  }
 }
 
 .blob {
@@ -143,5 +131,12 @@ onUnmounted(() => {
   position: fixed;
   z-index: 2;
   backdrop-filter: blur(11vmax);
+}
+
+.transition-container{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
 }
 </style>

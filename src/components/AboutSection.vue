@@ -101,7 +101,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { MapPinIcon, MailIcon, FileDownIcon, GithubIcon, LinkedinIcon, Instagram } from 'lucide-vue-next';
+import { MapPinIcon, MailIcon, GithubIcon, LinkedinIcon, Instagram } from 'lucide-vue-next';
 import billyflin from '../assets/img/Billyflin.jpg';
 import MagicTextSpan from "./MagicTextSpan.vue";
 
@@ -111,3 +111,23 @@ const onImageLoad = () => {
   imageLoaded.value = true;
 };
 </script>
+
+<style scoped>
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
