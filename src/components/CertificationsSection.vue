@@ -32,7 +32,7 @@
                 rel="noopener noreferrer"
                 class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 md:px-4 md:py-2 rounded-md transition-colors flex items-center group"
             >
-              <LinkIcon class="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2 group-hover:animate-pulse" />
+              <LinkIcon class="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2 group-hover:animate-pulse"/>
               <span class="text-xs md:text-sm">Ver certificado</span>
             </a>
           </div>
@@ -44,32 +44,40 @@
 
 
 <script setup>
-import { ServerIcon,LinkIcon } from 'lucide-vue-next';
+import {ServerIcon, LinkIcon} from 'lucide-vue-next';
 import {Amazonec2Icon, Css3Icon, GoogleDataflowIcon, Html5Icon} from "vue3-simple-icons";
 
 const certifications = [
   {
-    name:'Google Data Analytics: Ask Questions to Make Data-Driven Decisions',
+    name: 'Google Data Analytics: Prepare Data for Exploration',
+    description: 'Certificación que valida la capacidad de preparar datos para su análisis.',
+    date: 'Noviembre 2024',
+    icon: GoogleDataflowIcon,
+    link:'https://coursera.org/share/6478ccbfb54ba459770986c2df41b94f'
+  }
+    ,
+  {
+    name: 'Google Data Analytics: Ask Questions to Make Data-Driven Decisions',
     description: 'Certificación que valida la capacidad de hacer preguntas y tomar decisiones basadas en datos.',
     date: 'Noviembre 2024',
     icon: GoogleDataflowIcon,
     link: 'https://coursera.org/share/4f455dc94f1d7dcdb508f641b9cd20ad'
   },
-  {name: 'Google Data Analytics: Data, Data, Everywhere',
+  {
+    name: 'Google Data Analytics: Data, Data, Everywhere',
     description: 'Certificación que valida la capacidad de analizar datos y tomar decisiones basadas en ellos.',
     date: 'Noviembre 2024',
     icon: GoogleDataflowIcon,
     link: 'https://coursera.org/share/a27620eae606cf00581ab24eb97ecf59'
 
-  }
-    ,
+  },
   {
     name: 'Codecademy - CSS',
     description: 'Certificación que valida la capacidad de usar CSS para diseñar sitios web.',
     date: 'Agosto 2023',
     icon: Css3Icon,
     link: 'https://www.codecademy.com/profiles/Billyflin/certificates/9da84567e8ff414b91f0b23d917fb42f'
-  },  {
+  }, {
     name: 'Codecademy - HTML',
     description: 'Certificación que valida la capacidad de usar HTML para diseñar sitios web.',
     date: 'Agosto 2023',
