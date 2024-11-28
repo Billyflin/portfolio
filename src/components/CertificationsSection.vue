@@ -4,9 +4,80 @@
       <h2 class="text-4xl md:text-5xl font-bold mb-10 md:mb-16 text-center text-gradient">
         Certificaciones
       </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+      <!-- Certificados "grandes" -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10">
         <div
-            v-for="cert in certifications"
+            v-for="cert in certificationsWithSubcertificates"
+            :key="cert.name"
+            class="bg-gray-800 rounded-xl p-5 md:p-6 shadow-lg transform hover:scale-105 transition-all duration-300"
+        >
+          <!-- Imagen del certificado -->
+          <img
+              :src="cert.imageSrc"
+              :alt="cert.imageAlt"
+              class="w-full h-auto mb-4 rounded"
+          />
+          <!-- Información del certificado -->
+          <div class="flex items-center mb-3 md:mb-4">
+            <component
+                :is="cert.icon"
+                class="w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4 text-gradient"
+            />
+            <h3 class="text-xl md:text-2xl font-semibold text-white">
+              {{ cert.name }}
+            </h3>
+          </div>
+          <p class="text-gray-300 mb-3 md:mb-4 text-sm md:text-base">
+            {{ cert.description }}
+          </p>
+          <div class="flex justify-between items-center flex-wrap mb-4">
+            <span class="text-xs md:text-sm text-gray-400">
+              {{ cert.date }}
+            </span>
+            <a
+                :href="cert.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 md:px-4 md:py-2 rounded-md transition-colors flex items-center group"
+            >
+              <LinkIcon class="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2 group-hover:animate-pulse" />
+              <span class="text-xs md:text-sm">Ver certificado</span>
+            </a>
+          </div>
+          <!-- Subcertificados -->
+          <div v-if="cert.subcertificates" class="pl-4 border-l border-gray-700">
+            <h4 class="text-lg md:text-xl font-semibold text-white mb-2">
+              Subcertificados:
+            </h4>
+            <ul>
+              <li
+                  v-for="sub in cert.subcertificates"
+                  :key="sub.name"
+                  class="flex items-center mb-2"
+              >
+                <component
+                    :is="sub.icon"
+                    class="w-6 h-6 md:w-8 md:h-8 mr-2 text-gradient"
+                />
+                <a
+                    :href="sub.link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm md:text-base text-gray-300 hover:text-white transition-colors"
+                >
+                  {{ sub.name }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificados "simples" -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+        <div
+            v-for="cert in certificationsWithoutSubcertificates"
             :key="cert.name"
             class="bg-gray-800 rounded-xl p-5 md:p-6 shadow-lg transform hover:scale-105 transition-all duration-300"
         >
@@ -32,134 +103,175 @@
                 rel="noopener noreferrer"
                 class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 md:px-4 md:py-2 rounded-md transition-colors flex items-center group"
             >
-              <LinkIcon class="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2 group-hover:animate-pulse"/>
+              <LinkIcon class="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2 group-hover:animate-pulse" />
               <span class="text-xs md:text-sm">Ver certificado</span>
             </a>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 </template>
 
-
 <script setup>
-import {ServerIcon, LinkIcon, ChartPieIcon} from 'lucide-vue-next';
+import { computed } from 'vue';
 import {
-  Amazonec2Icon,
-  Css3Icon,
+  LinkIcon,
+  ChartPieIcon,
+  DatabaseIcon,
+  TrendingUpIcon,
+  LayersIcon,
+  BarChartIcon
+} from 'lucide-vue-next';
+
+import {
   GoogleAnalyticsIcon,
-  GoogleDataflowIcon, GoogleDataprocIcon,
-  GoogleIcon,
+  PythonIcon,
+  RIcon,
   Html5Icon,
-  RIcon
-} from "vue3-simple-icons";
+  Css3Icon,
+  AmazonWebServicesIcon,
+  GoogleCloudIcon,
+} from 'vue3-simple-icons';
+
 
 const certifications = [
   {
     name: 'Google Advanced Data Analytics',
-    description: 'Certificación de 7 cursos de analisis de datos avanzado.',
+    description: 'Certificación de 7 cursos de análisis de datos avanzado.',
     date: 'Noviembre 2024',
-    icon: GoogleIcon,
-    link: 'https://coursera.org/share/b44ac3af30dd271b9fc0933a3eb26f48'
-  },
-  {
-    name: 'Google Foundations of Data Science',
-    description: 'Inicio de data analytics avanzado.',
-    date: 'Noviembre 2024',
-    icon: GoogleDataprocIcon,
-    link: 'https://coursera.org/share/1ade822f432a16f28cd397645572ac04'
+    icon: GoogleAnalyticsIcon,
+    imageSrc: '/CourseraGAD.png',
+    imageAlt: 'Ver certificado para Billy Martinez Cofré, Google Advanced Data Analytics, ofrecido a través de Coursera. Aquellos que obtienen el Certificado de Análisis de Datos Avanzado de Google han completado siete cursos que incluyen evaluaciones prácticas y están diseñados para prepararlos para roles avanzados en análisis de datos y roles de nivel inicial en ciencia de datos. Son competentes en explorar grandes conjuntos de datos, aplicar técnicas de análisis de datos y construir modelos para extraer conocimientos. También son competentes en aprendizaje automático, modelado predictivo y estadísticas.',
+    link: 'https://coursera.org/share/b44ac3af30dd271b9fc0933a3eb26f48',
+    subcertificates: [
+      {
+        name: 'The Nuts and Bolts of Machine Learning',
+        icon: LayersIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/3UNP8RK9UP6U',
+      },
+      {
+        name: 'Regression Analysis: Simplify Complex Data Relationships',
+        icon: BarChartIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/MN1LOUTBLKZ9',
+      },
+      {
+        name: 'The Power of Statistics',
+        icon: TrendingUpIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/9UPK84IDGE6O',
+      },
+      {
+        name: 'Get Started with Python',
+        icon: PythonIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/QRQ6RLJJ4MRQ',
+      },
+      {
+        name: 'Google Advanced Data Analytics Capstone',
+        icon: GoogleAnalyticsIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/P1090IV5UW1S',
+      },
+      {
+        name: 'Go Beyond the Numbers: Translate Data into Insights',
+        icon: ChartPieIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/XZXHJQPIA8LV',
+      },
+      {
+        name: 'Foundations of Data Science',
+        icon: DatabaseIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/1TYJ2507R87S',
+      },
+    ],
   },
   {
     name: 'Google Data Analytics',
-    description: 'Certificación de 8 cursos de analisis de datos.',
+    description: 'Certificación de 8 cursos de análisis de datos.',
     date: 'Noviembre 2024',
-    icon: GoogleIcon,
-    link: 'https://coursera.org/share/cd01808e79ade1be04b6f4fa30887265'
-
+    icon: GoogleAnalyticsIcon,
+    imageSrc: '/CourseraGD.png',
+    imageAlt: 'Ver certificado para Billy Martinez Cofré, Google Data Analytics, ofrecido a través de Coursera.',
+    link: 'https://coursera.org/share/cd01808e79ade1be04b6f4fa30887265',
+    subcertificates: [
+      {
+        name: 'Data Analysis with R Programming',
+        icon: RIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/U20YQ0880LMO',
+      },
+      {
+        name: 'Process Data from Dirty to Clean',
+        icon: LayersIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/REAQS9WTLELF',
+      },
+      {
+        name: 'Foundations: Data, Data, Everywhere',
+        icon: DatabaseIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/H2CU93CAVYBO',
+      },
+      {
+        name: 'Prepare Data for Exploration',
+        icon: DatabaseIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/IDVDAW7XKL1L',
+      },
+      {
+        name: 'Google Data Analytics Capstone: Complete a Case Study',
+        icon: GoogleAnalyticsIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/5UV7V8TN00X4',
+      },
+      {
+        name: 'Analyze Data to Answer Questions',
+        icon: ChartPieIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/GHVVVYNYPB3S',
+      },
+      {
+        name: 'Share Data Through the Art of Visualization',
+        icon: ChartPieIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/KXM4O3FXGZ2O',
+      },
+      {
+        name: 'Ask Questions to Make Data-Driven Decisions',
+        icon: TrendingUpIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/2PUUU22DPL4X',
+      },
+    ],
   },
+  // Certificados simples
   {
-    name: 'Google Data Analytics: Data Analysis with R Programming',
-    description: 'Certificación que valida la capacidad de analizar datos con R.',
-    date: 'Noviembre 2024',
-    icon: RIcon,
-    link: 'https://coursera.org/share/71d28a883d7cb0adae4cda3ceef92406'
-  },
-  {
-    name: 'Google Data Analytics: Share Data Through the Art of Visualization',
-    description: 'Certificación que valida la capacidad de compartir datos a través de visualizaciones.',
-    date: 'Noviembre 2024',
-    icon: ChartPieIcon,
-    link: 'https://coursera.org/share/83b6f950a9474d307d580d04de97f30a'
-
-  },
-  {
-    name: 'Google Data Analytics: Analyze Data to Answer Questions',
-    link: 'https://coursera.org/share/8832b6da820bbefde70f673833b07c3b',
-    description: 'Certificación que valida la capacidad de analizar datos para responder preguntas.',
-    date: 'Noviembre 2024',
-    icon: GoogleAnalyticsIcon
-
-  },
-  {
-    name: 'Google Data Analytics: Process Data from Dirty to Clean',
-    description: 'Certificación que valida la capacidad de limpiar datos para su análisis.',
-    date: 'Noviembre 2024',
-    icon: GoogleDataflowIcon,
-    link: 'https://coursera.org/share/fa6fd87b6037023d8231fa0cecb840ec'
-  },
-  {
-    name: 'Google Data Analytics: Prepare Data for Exploration',
-    description: 'Certificación que valida la capacidad de preparar datos para su análisis.',
-    date: 'Noviembre 2024',
-    icon: GoogleDataflowIcon,
-    link: 'https://coursera.org/share/6478ccbfb54ba459770986c2df41b94f'
-  },
-  {
-    name: 'Google Data Analytics: Ask Questions to Make Data-Driven Decisions',
-    description: 'Certificación que valida la capacidad de hacer preguntas y tomar decisiones basadas en datos.',
-    date: 'Noviembre 2024',
-    icon: GoogleDataflowIcon,
-    link: 'https://coursera.org/share/4f455dc94f1d7dcdb508f641b9cd20ad'
-  },  {
-    name: 'Google Data Analytics: Data, Data, Everywhere',
-    description: 'Certificación que valida la capacidad de analizar datos y tomar decisiones basadas en ellos.',
-    date: 'Noviembre 2024',
-    icon: GoogleDataflowIcon,
-    link: 'https://coursera.org/share/a27620eae606cf00581ab24eb97ecf59'
-
-  },  {
     name: 'Codecademy - CSS',
-    description: 'Certificación que valida la capacidad de usar CSS para diseñar sitios web.',
+    description: 'Uso de CSS para diseñar sitios web.',
     date: 'Agosto 2023',
     icon: Css3Icon,
-    link: 'https://www.codecademy.com/profiles/Billyflin/certificates/9da84567e8ff414b91f0b23d917fb42f'
-  }, {
+    link: 'https://www.codecademy.com/profiles/Billyflin/certificates/9da84567e8ff414b91f0b23d917fb42f',
+  },
+  {
     name: 'Codecademy - HTML',
-    description: 'Certificación que valida la capacidad de usar HTML para diseñar sitios web.',
+    description: 'Uso de HTML para estructurar sitios web.',
     date: 'Agosto 2023',
     icon: Html5Icon,
-    link: 'https://www.codecademy.com/profiles/Billyflin/certificates/c6f2b55a48f440a6a876686f7487e1a7'
-  }, {
+    link: 'https://www.codecademy.com/profiles/Billyflin/certificates/c6f2b55a48f440a6a876686f7487e1a7',
+  },
+  {
     name: 'Google Cloud Fundamentals: Core Infrastructure',
-    description: 'Certificación que valida la capacidad de usar Google Cloud para implementar aplicaciones y servicios.',
+    description: 'Uso de Google Cloud para implementar aplicaciones y servicios.',
     date: 'Julio 2022',
-    icon: ServerIcon,
-    link: 'https://www.coursera.org/account/accomplishments/verify/KR6EN4R7CGDJ'
-  }, {
-    name: 'Google Cloud Infrastructure: Foundation',
-    description: 'Acreditación que valida la capacidad de usar Google Cloud para implementar aplicaciones y servicios.',
-    date: 'Julio 2022',
-    icon: ServerIcon,
-    link: 'https://www.coursera.org/account/accomplishments/verify/5SQ5CZ3ZD48K'
-  }, {
+    icon: GoogleCloudIcon,
+    link: 'https://www.coursera.org/account/accomplishments/verify/KR6EN4R7CGDJ',
+  },
+  {
     name: 'Amazon Web Services - AWS Certified Solutions Architect',
-    description: 'Certificación que valida la capacidad de diseñar sistemas distribuidos en AWS.',
+    description: 'Diseño de sistemas distribuidos en AWS.',
     date: 'Julio 2023',
-    icon: Amazonec2Icon,
-    link: ''
-  }
+    icon: AmazonWebServicesIcon,
+    link: 'https://www.youracclaim.com/users/BillyMartinezCofre/badges/ENLACE_DEL_CERTIFICADO',
+  },
 ];
+
+const certificationsWithSubcertificates = computed(() =>
+    certifications.filter(cert => cert.subcertificates)
+);
+
+const certificationsWithoutSubcertificates = computed(() =>
+    certifications.filter(cert => !cert.subcertificates)
+);
 </script>
 
 <style scoped>
@@ -188,11 +300,12 @@ const certifications = [
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
