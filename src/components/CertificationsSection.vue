@@ -20,6 +20,13 @@
                 class="w-full h-auto rounded-lg shadow-md"
             />
           </div>
+          <!-- Embed de la insignia de Credly -->
+          <div v-if="cert.embedCode" v-html="cert.embedCode"></div>
+          <div style="z-index: 9999999" data-iframe-width="150" data-iframe-height="270"
+               data-share-badge-id="d8079709-e5f5-404f-84b1-fdf90366e698"
+               data-share-badge-host="https://www.credly.com"></div>
+
+
           <!-- Información del certificado -->
           <div class="md:w-2/3 md:pl-8">
             <div class="flex items-center mb-4">
@@ -46,7 +53,7 @@
             </div>
             <div class="flex justify-between items-center mb-4">
               <div class="flex items-center text-gray-400">
-                <CalendarIcon class="w-5 h-5 mr-2" />
+                <CalendarIcon class="w-5 h-5 mr-2"/>
                 <span>{{ cert.date }}</span>
               </div>
               <a
@@ -55,7 +62,7 @@
                   rel="noopener noreferrer"
                   class="text-purple-500 hover:text-purple-400 transition-colors flex items-center"
               >
-                <ExternalLinkIcon class="w-5 h-5 mr-1" />
+                <ExternalLinkIcon class="w-5 h-5 mr-1"/>
                 <span>Ver certificado</span>
               </a>
             </div>
@@ -120,7 +127,7 @@
           </div>
           <div class="flex justify-between items-center">
             <div class="flex items-center text-gray-400">
-              <CalendarIcon class="w-5 h-5 mr-2" />
+              <CalendarIcon class="w-5 h-5 mr-2"/>
               <span>{{ cert.date }}</span>
             </div>
             <a
@@ -129,7 +136,7 @@
                 rel="noopener noreferrer"
                 class="text-purple-500 hover:text-purple-400 transition-colors flex items-center"
             >
-              <ExternalLinkIcon class="w-5 h-5 mr-1" />
+              <ExternalLinkIcon class="w-5 h-5 mr-1"/>
               <span>Ver certificado</span>
             </a>
           </div>
@@ -141,9 +148,8 @@
 </template>
 
 
-
 <script setup>
-import { computed } from 'vue';
+import {computed} from 'vue';
 import {
   LinkIcon,
   CalendarIcon,
@@ -246,7 +252,7 @@ const certifications = [
       'Data Interpretation',
       'Communication Skills',
     ],
-    description:     'Certificado profesional que comprende 8 cursos diseñados para proporcionar habilidades esenciales en análisis de datos. Este programa capacita en el manejo de datos, limpieza, análisis y visualización, utilizando herramientas como R, SQL y hojas de cálculo. Los graduados están preparados para roles de analista de datos de nivel inicial, capaces de tomar decisiones basadas en datos y comunicar resultados de manera efectiva.',
+    description: 'Certificado profesional que comprende 8 cursos diseñados para proporcionar habilidades esenciales en análisis de datos. Este programa capacita en el manejo de datos, limpieza, análisis y visualización, utilizando herramientas como R, SQL y hojas de cálculo. Los graduados están preparados para roles de analista de datos de nivel inicial, capaces de tomar decisiones basadas en datos y comunicar resultados de manera efectiva.',
     date: 'Noviembre 2024',
     icon: GoogleAnalyticsIcon,
     imageSrc: '/CourseraGD.png',
