@@ -45,9 +45,25 @@
 
 <script setup>
 import {ServerIcon, LinkIcon, ChartPieIcon} from 'lucide-vue-next';
-import {Amazonec2Icon, Css3Icon, GoogleAnalyticsIcon, GoogleDataflowIcon, Html5Icon, RIcon} from "vue3-simple-icons";
+import {
+  Amazonec2Icon,
+  Css3Icon,
+  GoogleAnalyticsIcon,
+  GoogleDataflowIcon,
+  GoogleIcon,
+  Html5Icon,
+  RIcon
+} from "vue3-simple-icons";
 
 const certifications = [
+  {
+    name: 'Google Data Analytics',
+    description: 'Certificación de 8 cursos de analisis de datos.',
+    date: 'Noviembre 2024',
+    icon: GoogleIcon,
+    link: 'https://coursera.org/share/cd01808e79ade1be04b6f4fa30887265'
+
+  },
   {
     name: 'Google Data Analytics: Data Analysis with R Programming',
     description: 'Certificación que valida la capacidad de analizar datos con R.',
