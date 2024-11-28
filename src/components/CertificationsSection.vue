@@ -180,7 +180,47 @@ import {
 } from 'vue3-simple-icons';
 
 
-const certifications = [
+const certifications = [{
+  name:'AWS Cloud Solutions Architect',
+  description: 'Certificación que valida habilidades en diseño de soluciones en la nube de AWS. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS.',
+  date: 'Diciembre 2024',
+  icon: AmazonWebServicesIcon,
+  imageSrc: '/AWS-CSA.png',
+  imageAlt: 'Ver certificado para Billy Martinez Cofré, AWS Cloud Solutions Architect, ofrecido a través de Amazon Web Services. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS.',
+  link: 'https://coursera.org/share/e39b52b82410a6d0327ac715e3fb971c',
+  // badge: 'https://www.credly.com/badges/7b3b3b3b-3b3b-4b3b-8b3b-3b3b3b3b3b3b/public_url',
+  // badgeAlt: 'Ver insignia de Credly para Billy Martinez Cofré, AWS Cloud Solutions Architect, ofrecido a través de Amazon Web Services.',
+  // badgeImg: '/aws-cloud-solutions-architect.png',
+  skills: [
+      'Data Lakes',
+      'AWS Management Console',
+      'AWS Certification Preparation',
+      'Cloud Architecture',
+      'Architecting on AWS',
+  ],
+  subcertificates: [
+    {
+      name: 'AWS Cloud Technical Essentials',
+      icon: AmazonWebServicesIcon,
+      link: 'https://www.coursera.org/account/accomplishments/verify/75PTN8NO9DXN',
+    },
+    {
+      name: 'Architecting Solutions on AWS',
+      icon: AmazonWebServicesIcon,
+      link: 'https://www.coursera.org/account/accomplishments/verify/K496NT6SYNWO',
+    },
+    {
+      name: 'Building Data Lakes on AWS',
+      icon: AmazonWebServicesIcon,
+      link: 'https://www.coursera.org/account/accomplishments/verify/1DVKW4IUL0NZ',
+    },
+    {
+      name: 'Exam Prep: AWS Certified Solutions Architect - Associate',
+      icon: AmazonWebServicesIcon,
+      link: 'https://www.coursera.org/account/accomplishments/verify/W7GPH1WELLOL',
+    }
+  ]
+},
   {
     name: 'Google Advanced Data Analytics',
     description:
