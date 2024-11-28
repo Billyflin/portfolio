@@ -1,5 +1,5 @@
 <template>
-  <section id="certifications" class="py-16 ">
+  <section id="certifications" class="py-16">
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold mb-12 text-center text-gradient">
         Certificaciones
@@ -12,20 +12,28 @@
             :key="cert.name"
             class="bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-stretch md:items-start"
         >
-          <!-- Imagen del certificado -->
-          <div class="md:w-1/3 mb-6 md:mb-0">
+          <!-- Imagen del certificado y de la insignia -->
+          <div class="md:w-1/3 mb-6 md:mb-0 flex flex-col items-center">
             <img
                 :src="cert.imageSrc"
                 :alt="cert.imageAlt"
                 class="w-full h-auto rounded-lg shadow-md"
             />
+            <!-- Imagen de la insignia -->
+            <div v-if="cert.badgeImg" class="mt-4">
+              <a
+                  :href="cert.badge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+              >
+                <img
+                    :src="cert.badgeImg"
+                    :alt="cert.badgeAlt"
+                    class="max-w-xs h-auto mx-auto"
+                />
+              </a>
+            </div>
           </div>
-          <!-- Embed de la insignia de Credly -->
-          <div v-if="cert.embedCode" v-html="cert.embedCode"></div>
-          <div style="z-index: 9999999" data-iframe-width="150" data-iframe-height="270"
-               data-share-badge-id="d8079709-e5f5-404f-84b1-fdf90366e698"
-               data-share-badge-host="https://www.credly.com"></div>
-
 
           <!-- Información del certificado -->
           <div class="md:w-2/3 md:pl-8">
@@ -53,7 +61,7 @@
             </div>
             <div class="flex justify-between items-center mb-4">
               <div class="flex items-center text-gray-400">
-                <CalendarIcon class="w-5 h-5 mr-2"/>
+                <CalendarIcon class="w-5 h-5 mr-2" />
                 <span>{{ cert.date }}</span>
               </div>
               <a
@@ -62,7 +70,7 @@
                   rel="noopener noreferrer"
                   class="text-purple-500 hover:text-purple-400 transition-colors flex items-center"
               >
-                <ExternalLinkIcon class="w-5 h-5 mr-1"/>
+                <ExternalLinkIcon class="w-5 h-5 mr-1" />
                 <span>Ver certificado</span>
               </a>
             </div>
@@ -125,9 +133,9 @@
               {{ skill }}
             </span>
           </div>
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between items-center mb-4">
             <div class="flex items-center text-gray-400">
-              <CalendarIcon class="w-5 h-5 mr-2"/>
+              <CalendarIcon class="w-5 h-5 mr-2" />
               <span>{{ cert.date }}</span>
             </div>
             <a
@@ -136,7 +144,7 @@
                 rel="noopener noreferrer"
                 class="text-purple-500 hover:text-purple-400 transition-colors flex items-center"
             >
-              <ExternalLinkIcon class="w-5 h-5 mr-1"/>
+              <ExternalLinkIcon class="w-5 h-5 mr-1" />
               <span>Ver certificado</span>
             </a>
           </div>
@@ -182,6 +190,9 @@ const certifications = [
     imageSrc: '/CourseraGAD.png',
     imageAlt: 'Ver certificado para Billy Martinez Cofré, Google Advanced Data Analytics, ofrecido a través de Coursera. Aquellos que obtienen el Certificado de Análisis de Datos Avanzado de Google han completado siete cursos que incluyen evaluaciones prácticas y están diseñados para prepararlos para roles avanzados en análisis de datos y roles de nivel inicial en ciencia de datos. Son competentes en explorar grandes conjuntos de datos, aplicar técnicas de análisis de datos y construir modelos para extraer conocimientos. También son competentes en aprendizaje automático, modelado predictivo y estadísticas.',
     link: 'https://coursera.org/share/b44ac3af30dd271b9fc0933a3eb26f48',
+    badge: 'https://www.credly.com/badges/d8079709-e5f5-404f-84b1-fdf90366e698/public_url',
+    badgeAlt: 'Ver insignia de Credly para Billy Martinez Cofré, Google Advanced Data Analytics, ofrecido a través de Coursera.',
+    badgeImg: '/google-advanced-data-analytics-certificate.png',
     subcertificates: [
       {
         name: 'The Nuts and Bolts of Machine Learning',
@@ -300,6 +311,9 @@ const certifications = [
         link: 'https://www.coursera.org/account/accomplishments/verify/2PUUU22DPL4X',
       },
     ],
+    badge: 'https://www.credly.com/badges/ab1b6b6d-f85f-4aff-9b93-480a149550e8/public_url',
+    badgeAlt: 'Ver insignia de Credly para Billy Martinez Cofré, Google Data Analytics Professional Certificate, ofrecido a través de Coursera.',
+    badgeImg: '/google-data-analytics-professional-certificate.2.png',
 
   },
   // Certificados simples
