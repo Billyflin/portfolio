@@ -49,13 +49,27 @@ import {
   Amazonec2Icon,
   Css3Icon,
   GoogleAnalyticsIcon,
-  GoogleDataflowIcon,
+  GoogleDataflowIcon, GoogleDataprocIcon,
   GoogleIcon,
   Html5Icon,
   RIcon
 } from "vue3-simple-icons";
 
 const certifications = [
+  {
+    name: 'Google Advanced Data Analytics',
+    description: 'Certificación de 7 cursos de analisis de datos avanzado.',
+    date: 'Noviembre 2024',
+    icon: GoogleIcon,
+    link: 'https://coursera.org/share/b44ac3af30dd271b9fc0933a3eb26f48'
+  },
+  {
+    name: 'Google Foundations of Data Science',
+    description: 'Inicio de data analytics avanzado.',
+    date: 'Noviembre 2024',
+    icon: GoogleDataprocIcon,
+    link: 'https://coursera.org/share/1ade822f432a16f28cd397645572ac04'
+  },
   {
     name: 'Google Data Analytics',
     description: 'Certificación de 8 cursos de analisis de datos.',
@@ -78,8 +92,8 @@ const certifications = [
     icon: ChartPieIcon,
     link: 'https://coursera.org/share/83b6f950a9474d307d580d04de97f30a'
 
-  }
-  , {
+  },
+  {
     name: 'Google Data Analytics: Analyze Data to Answer Questions',
     link: 'https://coursera.org/share/8832b6da820bbefde70f673833b07c3b',
     description: 'Certificación que valida la capacidad de analizar datos para responder preguntas.',
@@ -87,7 +101,6 @@ const certifications = [
     icon: GoogleAnalyticsIcon
 
   },
-
   {
     name: 'Google Data Analytics: Process Data from Dirty to Clean',
     description: 'Certificación que valida la capacidad de limpiar datos para su análisis.',
@@ -101,24 +114,21 @@ const certifications = [
     date: 'Noviembre 2024',
     icon: GoogleDataflowIcon,
     link: 'https://coursera.org/share/6478ccbfb54ba459770986c2df41b94f'
-  }
-  ,
+  },
   {
     name: 'Google Data Analytics: Ask Questions to Make Data-Driven Decisions',
     description: 'Certificación que valida la capacidad de hacer preguntas y tomar decisiones basadas en datos.',
     date: 'Noviembre 2024',
     icon: GoogleDataflowIcon,
     link: 'https://coursera.org/share/4f455dc94f1d7dcdb508f641b9cd20ad'
-  },
-  {
+  },  {
     name: 'Google Data Analytics: Data, Data, Everywhere',
     description: 'Certificación que valida la capacidad de analizar datos y tomar decisiones basadas en ellos.',
     date: 'Noviembre 2024',
     icon: GoogleDataflowIcon,
     link: 'https://coursera.org/share/a27620eae606cf00581ab24eb97ecf59'
 
-  },
-  {
+  },  {
     name: 'Codecademy - CSS',
     description: 'Certificación que valida la capacidad de usar CSS para diseñar sitios web.',
     date: 'Agosto 2023',
@@ -130,22 +140,19 @@ const certifications = [
     date: 'Agosto 2023',
     icon: Html5Icon,
     link: 'https://www.codecademy.com/profiles/Billyflin/certificates/c6f2b55a48f440a6a876686f7487e1a7'
-  },
-  {
+  }, {
     name: 'Google Cloud Fundamentals: Core Infrastructure',
     description: 'Certificación que valida la capacidad de usar Google Cloud para implementar aplicaciones y servicios.',
     date: 'Julio 2022',
     icon: ServerIcon,
     link: 'https://www.coursera.org/account/accomplishments/verify/KR6EN4R7CGDJ'
-  },
-  {
+  }, {
     name: 'Google Cloud Infrastructure: Foundation',
     description: 'Acreditación que valida la capacidad de usar Google Cloud para implementar aplicaciones y servicios.',
     date: 'Julio 2022',
     icon: ServerIcon,
     link: 'https://www.coursera.org/account/accomplishments/verify/5SQ5CZ3ZD48K'
-  },
-  {
+  }, {
     name: 'Amazon Web Services - AWS Certified Solutions Architect',
     description: 'Certificación que valida la capacidad de diseñar sistemas distribuidos en AWS.',
     date: 'Julio 2023',
