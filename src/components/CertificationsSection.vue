@@ -1,110 +1,136 @@
 <template>
-  <section id="certifications" class="py-10 md:py-20">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-10 md:mb-16 text-center text-gradient">
+  <section id="certifications" class="py-16 ">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center text-gradient">
         Certificaciones
       </h2>
 
       <!-- Certificados "grandes" -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10">
+      <div class="space-y-12 mb-16">
         <div
             v-for="cert in certificationsWithSubcertificates"
             :key="cert.name"
-            class="bg-gray-800 rounded-xl p-5 md:p-6 shadow-lg transform hover:scale-105 transition-all duration-300"
+            class="bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-stretch md:items-start"
         >
           <!-- Imagen del certificado -->
-          <img
-              :src="cert.imageSrc"
-              :alt="cert.imageAlt"
-              class="w-full h-auto mb-4 rounded"
-          />
-          <!-- Información del certificado -->
-          <div class="flex items-center mb-3 md:mb-4">
-            <component
-                :is="cert.icon"
-                class="w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4 text-gradient"
+          <div class="md:w-1/3 mb-6 md:mb-0">
+            <img
+                :src="cert.imageSrc"
+                :alt="cert.imageAlt"
+                class="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 class="text-xl md:text-2xl font-semibold text-white">
-              {{ cert.name }}
-            </h3>
           </div>
-          <p class="text-gray-300 mb-3 md:mb-4 text-sm md:text-base">
-            {{ cert.description }}
-          </p>
-          <div class="flex justify-between items-center flex-wrap mb-4">
-            <span class="text-xs md:text-sm text-gray-400">
-              {{ cert.date }}
-            </span>
-            <a
-                :href="cert.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 md:px-4 md:py-2 rounded-md transition-colors flex items-center group"
-            >
-              <LinkIcon class="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2 group-hover:animate-pulse" />
-              <span class="text-xs md:text-sm">Ver certificado</span>
-            </a>
-          </div>
-          <!-- Subcertificados -->
-          <div v-if="cert.subcertificates" class="pl-4 border-l border-gray-700">
-            <h4 class="text-lg md:text-xl font-semibold text-white mb-2">
-              Subcertificados:
-            </h4>
-            <ul>
-              <li
-                  v-for="sub in cert.subcertificates"
-                  :key="sub.name"
-                  class="flex items-center mb-2"
+          <!-- Información del certificado -->
+          <div class="md:w-2/3 md:pl-8">
+            <div class="flex items-center mb-4">
+              <component
+                  :is="cert.icon"
+                  class="w-12 h-12 mr-4 text-white"
+              />
+              <h3 class="text-3xl font-semibold text-white">
+                {{ cert.name }}
+              </h3>
+            </div>
+            <p class="text-gray-300 mb-4">
+              {{ cert.description }}
+            </p>
+            <!-- Habilidades -->
+            <div class="flex flex-wrap mb-4">
+              <span
+                  v-for="skill in cert.skills"
+                  :key="skill"
+                  class="bg-purple-600 text-white text-sm font-medium mr-2 mb-2 px-3 py-1 rounded-full"
               >
-                <component
-                    :is="sub.icon"
-                    class="w-6 h-6 md:w-8 md:h-8 mr-2 text-gradient"
-                />
-                <a
-                    :href="sub.link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-sm md:text-base text-gray-300 hover:text-white transition-colors"
+                {{ skill }}
+              </span>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+              <div class="flex items-center text-gray-400">
+                <CalendarIcon class="w-5 h-5 mr-2" />
+                <span>{{ cert.date }}</span>
+              </div>
+              <a
+                  :href="cert.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-purple-500 hover:text-purple-400 transition-colors flex items-center"
+              >
+                <ExternalLinkIcon class="w-5 h-5 mr-1" />
+                <span>Ver certificado</span>
+              </a>
+            </div>
+            <!-- Subcertificados -->
+            <div v-if="cert.subcertificates" class="mt-6">
+              <h4 class="text-2xl font-semibold text-white mb-3">
+                Subcertificados
+              </h4>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <li
+                    v-for="sub in cert.subcertificates"
+                    :key="sub.name"
+                    class="flex items-center bg-gray-700 rounded-lg p-4"
                 >
-                  {{ sub.name }}
-                </a>
-              </li>
-            </ul>
+                  <component
+                      :is="sub.icon"
+                      class="w-6 h-6 mr-3 text-white"
+                  />
+                  <a
+                      :href="sub.link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {{ sub.name }}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Certificados "simples" -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         <div
             v-for="cert in certificationsWithoutSubcertificates"
             :key="cert.name"
-            class="bg-gray-800 rounded-xl p-5 md:p-6 shadow-lg transform hover:scale-105 transition-all duration-300"
+            class="bg-gray-800 rounded-lg shadow-lg p-6"
         >
-          <div class="flex items-center mb-3 md:mb-4">
+          <div class="flex items-center mb-4">
             <component
                 :is="cert.icon"
-                class="w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4 text-gradient"
+                class="w-10 h-10 mr-3 text-white"
             />
-            <h3 class="text-xl md:text-2xl font-semibold text-white">
+            <h3 class="text-2xl font-semibold text-white">
               {{ cert.name }}
             </h3>
           </div>
-          <p class="text-gray-300 mb-3 md:mb-4 text-sm md:text-base">
+          <p class="text-gray-300 mb-4">
             {{ cert.description }}
           </p>
-          <div class="flex justify-between items-center flex-wrap">
-            <span class="text-xs md:text-sm text-gray-400">
-              {{ cert.date }}
+          <!-- Habilidades -->
+          <div v-if="cert.skills" class="flex flex-wrap mb-4">
+            <span
+                v-for="skill in cert.skills"
+                :key="skill"
+                class="bg-purple-600 text-white text-sm font-medium mr-2 mb-2 px-3 py-1 rounded-full"
+            >
+              {{ skill }}
             </span>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="flex items-center text-gray-400">
+              <CalendarIcon class="w-5 h-5 mr-2" />
+              <span>{{ cert.date }}</span>
+            </div>
             <a
                 :href="cert.link"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 md:px-4 md:py-2 rounded-md transition-colors flex items-center group"
+                class="text-purple-500 hover:text-purple-400 transition-colors flex items-center"
             >
-              <LinkIcon class="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2 group-hover:animate-pulse" />
-              <span class="text-xs md:text-sm">Ver certificado</span>
+              <ExternalLinkIcon class="w-5 h-5 mr-1" />
+              <span>Ver certificado</span>
             </a>
           </div>
         </div>
@@ -114,10 +140,14 @@
   </section>
 </template>
 
+
+
 <script setup>
 import { computed } from 'vue';
 import {
   LinkIcon,
+  CalendarIcon,
+  ExternalLinkIcon,
   ChartPieIcon,
   DatabaseIcon,
   TrendingUpIcon,
@@ -182,9 +212,39 @@ const certifications = [
         link: 'https://www.coursera.org/account/accomplishments/verify/1TYJ2507R87S',
       },
     ],
+    skills: [
+      'Data Science',
+      'Data Analysis',
+      'Python Programming',
+      'Jupyter Notebook',
+      'Machine Learning',
+      'Statistical Analysis',
+      'Tableau Software',
+      'Data Visualization',
+      'Predictive Modelling',
+      'Kaggle',
+      'Exploratory Data Analysis (EDA)',
+      'Regression Models'
+    ],
   },
   {
     name: 'Google Data Analytics',
+    skills: [
+      'Data Analysis',
+      'Data Cleaning',
+      'Data Visualization',
+      'Spreadsheets',
+      'SQL',
+      'R Programming',
+      'Data Collection',
+      'Statistical Analysis',
+      'Data Ethics',
+      'Data-driven Decision Making',
+      'Problem Solving',
+      'Critical Thinking',
+      'Data Interpretation',
+      'Communication Skills',
+    ],
     description: 'Certificación de 8 cursos de análisis de datos.',
     date: 'Noviembre 2024',
     icon: GoogleAnalyticsIcon,
@@ -233,6 +293,7 @@ const certifications = [
         link: 'https://www.coursera.org/account/accomplishments/verify/2PUUU22DPL4X',
       },
     ],
+
   },
   // Certificados simples
   {
@@ -255,13 +316,6 @@ const certifications = [
     date: 'Julio 2022',
     icon: GoogleCloudIcon,
     link: 'https://www.coursera.org/account/accomplishments/verify/KR6EN4R7CGDJ',
-  },
-  {
-    name: 'Amazon Web Services - AWS Certified Solutions Architect',
-    description: 'Diseño de sistemas distribuidos en AWS.',
-    date: 'Julio 2023',
-    icon: AmazonWebServicesIcon,
-    link: 'https://www.youracclaim.com/users/BillyMartinezCofre/badges/ENLACE_DEL_CERTIFICADO',
   },
 ];
 
