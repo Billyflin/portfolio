@@ -169,7 +169,8 @@ import {
 const certifications = [
   {
     name: 'Google Advanced Data Analytics',
-    description: 'Certificación de 7 cursos de análisis de datos avanzado.',
+    description:
+        'Programa profesional que abarca 7 cursos enfocados en análisis de datos avanzado. Este certificado valida habilidades en ciencia de datos, aprendizaje automático, análisis estadístico y programación en Python. Los graduados son competentes en explorar grandes conjuntos de datos, aplicar técnicas de análisis avanzadas y construir modelos predictivos para extraer insights valiosos.',
     date: 'Noviembre 2024',
     icon: GoogleAnalyticsIcon,
     imageSrc: '/CourseraGAD.png',
@@ -245,7 +246,7 @@ const certifications = [
       'Data Interpretation',
       'Communication Skills',
     ],
-    description: 'Certificación de 8 cursos de análisis de datos.',
+    description:     'Certificado profesional que comprende 8 cursos diseñados para proporcionar habilidades esenciales en análisis de datos. Este programa capacita en el manejo de datos, limpieza, análisis y visualización, utilizando herramientas como R, SQL y hojas de cálculo. Los graduados están preparados para roles de analista de datos de nivel inicial, capaces de tomar decisiones basadas en datos y comunicar resultados de manera efectiva.',
     date: 'Noviembre 2024',
     icon: GoogleAnalyticsIcon,
     imageSrc: '/CourseraGD.png',
