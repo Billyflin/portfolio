@@ -44,18 +44,42 @@
 
 
 <script setup>
-import {ServerIcon, LinkIcon} from 'lucide-vue-next';
-import {Amazonec2Icon, Css3Icon, GoogleDataflowIcon, Html5Icon} from "vue3-simple-icons";
+import {ServerIcon, LinkIcon, ChartPieIcon} from 'lucide-vue-next';
+import {Amazonec2Icon, Css3Icon, GoogleAnalyticsIcon, GoogleDataflowIcon, Html5Icon} from "vue3-simple-icons";
 
 const certifications = [
+  {
+    name: 'Google Data Analytics: Share Data Through the Art of Visualization',
+    description: 'Certificación que valida la capacidad de compartir datos a través de visualizaciones.',
+    date: 'Noviembre 2024',
+    icon: ChartPieIcon,
+    link: 'https://coursera.org/share/83b6f950a9474d307d580d04de97f30a'
+
+  }
+  , {
+    name: 'Google Data Analytics: Analyze Data to Answer Questions',
+    link: 'https://coursera.org/share/8832b6da820bbefde70f673833b07c3b',
+    description: 'Certificación que valida la capacidad de analizar datos para responder preguntas.',
+    date: 'Noviembre 2024',
+    icon: GoogleAnalyticsIcon
+
+  },
+
+  {
+    name: 'Google Data Analytics: Process Data from Dirty to Clean',
+    description: 'Certificación que valida la capacidad de limpiar datos para su análisis.',
+    date: 'Noviembre 2024',
+    icon: GoogleDataflowIcon,
+    link: 'https://coursera.org/share/fa6fd87b6037023d8231fa0cecb840ec'
+  },
   {
     name: 'Google Data Analytics: Prepare Data for Exploration',
     description: 'Certificación que valida la capacidad de preparar datos para su análisis.',
     date: 'Noviembre 2024',
     icon: GoogleDataflowIcon,
-    link:'https://coursera.org/share/6478ccbfb54ba459770986c2df41b94f'
+    link: 'https://coursera.org/share/6478ccbfb54ba459770986c2df41b94f'
   }
-    ,
+  ,
   {
     name: 'Google Data Analytics: Ask Questions to Make Data-Driven Decisions',
     description: 'Certificación que valida la capacidad de hacer preguntas y tomar decisiones basadas en datos.',
