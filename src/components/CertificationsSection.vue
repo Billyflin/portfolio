@@ -45,9 +45,16 @@
 
 <script setup>
 import {ServerIcon, LinkIcon, ChartPieIcon} from 'lucide-vue-next';
-import {Amazonec2Icon, Css3Icon, GoogleAnalyticsIcon, GoogleDataflowIcon, Html5Icon} from "vue3-simple-icons";
+import {Amazonec2Icon, Css3Icon, GoogleAnalyticsIcon, GoogleDataflowIcon, Html5Icon, RIcon} from "vue3-simple-icons";
 
 const certifications = [
+  {
+    name: 'Google Data Analytics: Data Analysis with R Programming',
+    description: 'Certificación que valida la capacidad de analizar datos con R.',
+    date: 'Noviembre 2024',
+    icon: RIcon,
+    link: 'https://coursera.org/share/71d28a883d7cb0adae4cda3ceef92406'
+  },
   {
     name: 'Google Data Analytics: Share Data Through the Art of Visualization',
     description: 'Certificación que valida la capacidad de compartir datos a través de visualizaciones.',
