@@ -61,7 +61,7 @@
             </div>
             <div class="flex justify-between items-center mb-4">
               <div class="flex items-center text-gray-400">
-                <CalendarIcon class="w-5 h-5 mr-2" />
+                <CalendarIcon class="w-5 h-5 mr-2"/>
                 <span>{{ cert.date }}</span>
               </div>
               <a
@@ -70,7 +70,7 @@
                   rel="noopener noreferrer"
                   class="text-purple-500 hover:text-purple-400 transition-colors flex items-center"
               >
-                <ExternalLinkIcon class="w-5 h-5 mr-1" />
+                <ExternalLinkIcon class="w-5 h-5 mr-1"/>
                 <span>Ver certificado</span>
               </a>
             </div>
@@ -135,7 +135,7 @@
           </div>
           <div class="flex justify-between items-center mb-4">
             <div class="flex items-center text-gray-400">
-              <CalendarIcon class="w-5 h-5 mr-2" />
+              <CalendarIcon class="w-5 h-5 mr-2"/>
               <span>{{ cert.date }}</span>
             </div>
             <a
@@ -144,7 +144,7 @@
                 rel="noopener noreferrer"
                 class="text-purple-500 hover:text-purple-400 transition-colors flex items-center"
             >
-              <ExternalLinkIcon class="w-5 h-5 mr-1" />
+              <ExternalLinkIcon class="w-5 h-5 mr-1"/>
               <span>Ver certificado</span>
             </a>
           </div>
@@ -180,47 +180,110 @@ import {
 } from 'vue3-simple-icons';
 
 
-const certifications = [{
-  name:'AWS Cloud Solutions Architect',
-  description: 'Certificación que valida habilidades en diseño de soluciones en la nube de AWS. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS.',
-  date: 'Diciembre 2024',
-  icon: AmazonWebServicesIcon,
-  imageSrc: '/AWS-CSA.png',
-  imageAlt: 'Ver certificado para Billy Martinez Cofré, AWS Cloud Solutions Architect, ofrecido a través de Amazon Web Services. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS.',
-  link: 'https://coursera.org/share/e39b52b82410a6d0327ac715e3fb971c',
-  // badge: 'https://www.credly.com/badges/7b3b3b3b-3b3b-4b3b-8b3b-3b3b3b3b3b3b/public_url',
-  // badgeAlt: 'Ver insignia de Credly para Billy Martinez Cofré, AWS Cloud Solutions Architect, ofrecido a través de Amazon Web Services.',
-  // badgeImg: '/aws-cloud-solutions-architect.png',
-  skills: [
+const certifications = [
+  {
+    name: 'AWS Cloud Technology Consultant',
+    description: 'Certificación que valida habilidades en tecnologías en la nube de AWS. Los titulares de esta certificación son competentes en la implementación de aplicaciones en la nube y la administración de infraestructura en AWS. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS.',
+    date: 'Diciembre 2024',
+    icon: AmazonWebServicesIcon,
+    imageSrc: '/AWS-CTC.png',
+    imageAlt: 'Ver certificado para Billy Martinez Cofré, AWS Cloud Technology Consultant, ofrecido a través de Amazon Web Services. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS.',
+    link: 'https://coursera.org/share/b6c862b295cf8f33acf3bfacf1a1f34d',
+    skills: [
+      'AWS Management Console',
+      'AWS Certification Preparation',
+      'Cloud Architecture',
+      'Architecting on AWS',
+    ],
+    subcertificates: [
+      {
+        name: 'Automation in the AWS Cloud',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/G45VH5JF5QCA',
+      },
+      {
+        name: 'AWS Cloud Technical Essentials',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/75PTN8NO9DXN',
+      },
+      {
+        name: 'DevOps on AWS and Project Management',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/L3TTFZ3Z4SHG',
+      },
+      {
+        name: 'Capstone: Following the AWS Well Architected Framework',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/TB0D0LVJLEEB',
+      },
+      {
+        name: 'Introduction to Information Technology and AWS Cloud',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/GB7V8E2033R9',
+      },
+      {
+        name: 'Developing Applications in Python on AWS',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/7PQLRHUW49LY',
+      },
+      {
+        name: 'Skills for Working as an AWS Cloud Consultant',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/9PW1KV7A3JTD',
+      },
+      {
+        name: 'Data Analytics and Databases on AWS',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/RCZARITR6MM5',
+      },
+      {
+        name: 'Providing Technical Support for AWS Workloads',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/LQ5IW0G1PFL8',
+      }
+    ]
+  },
+  {
+    name: 'AWS Cloud Solutions Architect',
+    description: 'Certificación que valida habilidades en diseño de soluciones en la nube de AWS. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS.',
+    date: 'Diciembre 2024',
+    icon: AmazonWebServicesIcon,
+    imageSrc: '/AWS-CSA.png',
+    imageAlt: 'Ver certificado para Billy Martinez Cofré, AWS Cloud Solutions Architect, ofrecido a través de Amazon Web Services. Los titulares de esta certificación son competentes en la arquitectura de sistemas distribuidos, la implementación de aplicaciones en la nube y la administración de infraestructura en AWS.',
+    link: 'https://coursera.org/share/e39b52b82410a6d0327ac715e3fb971c',
+    // badge: 'https://www.credly.com/badges/7b3b3b3b-3b3b-4b3b-8b3b-3b3b3b3b3b3b/public_url',
+    // badgeAlt: 'Ver insignia de Credly para Billy Martinez Cofré, AWS Cloud Solutions Architect, ofrecido a través de Amazon Web Services.',
+    // badgeImg: '/aws-cloud-solutions-architect.png',
+    skills: [
       'Data Lakes',
       'AWS Management Console',
       'AWS Certification Preparation',
       'Cloud Architecture',
       'Architecting on AWS',
-  ],
-  subcertificates: [
-    {
-      name: 'AWS Cloud Technical Essentials',
-      icon: AmazonWebServicesIcon,
-      link: 'https://www.coursera.org/account/accomplishments/verify/75PTN8NO9DXN',
-    },
-    {
-      name: 'Architecting Solutions on AWS',
-      icon: AmazonWebServicesIcon,
-      link: 'https://www.coursera.org/account/accomplishments/verify/K496NT6SYNWO',
-    },
-    {
-      name: 'Building Data Lakes on AWS',
-      icon: AmazonWebServicesIcon,
-      link: 'https://www.coursera.org/account/accomplishments/verify/1DVKW4IUL0NZ',
-    },
-    {
-      name: 'Exam Prep: AWS Certified Solutions Architect - Associate',
-      icon: AmazonWebServicesIcon,
-      link: 'https://www.coursera.org/account/accomplishments/verify/W7GPH1WELLOL',
-    }
-  ]
-},
+    ],
+    subcertificates: [
+      {
+        name: 'AWS Cloud Technical Essentials',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/75PTN8NO9DXN',
+      },
+      {
+        name: 'Architecting Solutions on AWS',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/K496NT6SYNWO',
+      },
+      {
+        name: 'Building Data Lakes on AWS',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/1DVKW4IUL0NZ',
+      },
+      {
+        name: 'Exam Prep: AWS Certified Solutions Architect - Associate',
+        icon: AmazonWebServicesIcon,
+        link: 'https://www.coursera.org/account/accomplishments/verify/W7GPH1WELLOL',
+      }
+    ]
+  },
   {
     name: 'Google Advanced Data Analytics',
     description:
